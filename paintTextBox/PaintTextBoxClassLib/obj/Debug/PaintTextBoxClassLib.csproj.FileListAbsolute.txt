@@ -1,0 +1,38 @@
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.LinesTextBox.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.PaintTextBox.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csproj.GenerateResource.Cache
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.CustomListBox.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.dll
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.Properties.Resources.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.dll
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.pdb
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.dll
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.pdb
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.CustomListBox.resources
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.LinesTextBox.resources
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.PaintTextBox.resources
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.Properties.Resources.resources
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.dll
+C:\Users\Administrator\Documents\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.pdb
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.dll
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.pdb
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csprojResolveAssemblyReference.cache
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.CustomListBox.resources
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.LinesTextBox.resources
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.PaintTextBox.resources
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.Properties.Resources.resources
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csproj.GenerateResource.Cache
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.dll
+D:\MGen\SilkRoad\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.dll
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csprojResolveAssemblyReference.cache
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.CustomListBox.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.LinesTextBox.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.PaintTextBox.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.Properties.Resources.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csproj.GenerateResource.Cache
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.dll
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.pdb

@@ -1,0 +1,10 @@
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\bin\Debug\PaintTextBoxTest.exe
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\bin\Debug\PaintTextBoxTest.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\bin\Debug\PaintTextBoxClassLib.dll
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\bin\Debug\PaintTextBoxClassLib.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\obj\Debug\PaintTextBoxTest.csprojResolveAssemblyReference.cache
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\obj\Debug\PaintTextBoxTest.Form1.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\obj\Debug\PaintTextBoxTest.Properties.Resources.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\obj\Debug\PaintTextBoxTest.csproj.GenerateResource.Cache
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\obj\Debug\PaintTextBoxTest.exe
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\paintTextBox\PaintTextBoxTest\obj\Debug\PaintTextBoxTest.pdb

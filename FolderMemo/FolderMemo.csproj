@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49D0B217-ABCF-49A1-BCC6-9AB80A171A4E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FolderMemo</RootNamespace>
+    <AssemblyName>FolderMemo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>stick-note_32x.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckFile.cs" />
+    <Compile Include="Common\XmlControl.cs" />
+    <Compile Include="CustomTooltip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomTooltip.Designer.cs">
+      <DependentUpon>CustomTooltip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DEFINE.cs" />
+    <Compile Include="DESCryptography.cs" />
+    <Compile Include="Form_Folder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Folder.Designer.cs">
+      <DependentUpon>Form_Folder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Memo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Memo.Designer.cs">
+      <DependentUpon>Form_Memo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Setting.Designer.cs">
+      <DependentUpon>Form_Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs" />
+    <Compile Include="PopupWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemTray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Memo_RichText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Memo_RichText.Designer.cs">
+      <DependentUpon>Form_Memo_RichText.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomTooltip.resx">
+      <DependentUpon>CustomTooltip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Folder.resx">
+      <DependentUpon>Form_Folder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Memo.resx">
+      <DependentUpon>Form_Memo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Setting.resx">
+      <DependentUpon>Form_Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SystemTray.resx">
+      <DependentUpon>SystemTray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Memo_RichText.resx">
+      <DependentUpon>Form_Memo_RichText.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_maximize_normal.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_maximize_over.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_minimize_down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_minimize_on.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_minimize_over.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_maximize_down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_restore_over.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_miniview_restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_miniview_restore_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_miniview_restore_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_restore_down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_restore_normal.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_close_over.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_close_down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_close_on.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stick-note-146414_640.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stick-note.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stick-note_32x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stick-note_32x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stick-note.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="temp.txt" />
+    <Content Include="xml\config.xml" />
+    <Content Include="xml\data.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="readme.txt" />
+    <None Include="Resources\upperArrow_disable.jpg" />
+    <None Include="Resources\upperArrow_enable.jpg" />
+    <None Include="Resources\ssw_close.ico" />
+    <None Include="Resources\ssw_close_down.ico" />
+    <None Include="Resources\ssw_close_over.ico" />
+    <None Include="Resources\ssw_expand.ico" />
+    <None Include="Resources\ssw_expand_down.ico" />
+    <None Include="Resources\ssw_expand_over.ico" />
+    <None Include="Resources\ssw_restore.ico" />
+    <None Include="Resources\ssw_restore_down.ico" />
+    <None Include="Resources\ssw_restore_over.ico" />
+    <None Include="Resources\ssw_close.png" />
+    <None Include="Resources\ssw_close_down.png" />
+    <None Include="Resources\ssw_close_over.png" />
+    <None Include="Resources\ssw_expand.png" />
+    <None Include="Resources\ssw_expand_down.png" />
+    <None Include="Resources\ssw_expand_over.png" />
+    <None Include="Resources\ssw_restore.png" />
+    <None Include="Resources\ssw_restore_down.png" />
+    <None Include="Resources\ssw_restore_over.png" />
+    <None Include="Resources\ssw_close_down2.png" />
+    <None Include="Resources\ssw_expand_down2.png" />
+    <None Include="Resources\ssw_restore_down2.png" />
+    <None Include="Resources\ssw_search.png" />
+    <Content Include="stick-note_32x.ico" />
+    <None Include="Resources\stick-note_write_32x.ico" />
+    <None Include="Resources\search_16x.png" />
+    <None Include="Resources\search_256x.png" />
+    <None Include="Resources\search_64x.png" />
+    <None Include="Resources\search_48x.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\btn_cose_navi.png" />
+    <None Include="Resources\btn_close_inactive_gray.png" />
+    <None Include="Resources\btn_close_gray.png" />
+    <None Include="Resources\delete.ico" />
+    <None Include="Resources\Likely_unavail.ico" />
+    <None Include="Resources\stick-note_16x.ico" />
+    <None Include="Resources\stick-note_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj">
+      <Project>{9f8a2843-4a4e-4aec-a285-ff40c86df13f}</Project>
+      <Name>CustomControlLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\paintTextBox\PaintTextBoxClassLib\PaintTextBoxClassLib.csproj">
+      <Project>{36df8dcd-6743-4d99-8ed5-1b4b3f4c72cd}</Project>
+      <Name>PaintTextBoxClassLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

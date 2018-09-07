@@ -1,0 +1,37 @@
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\bin\Release\FolderMemo.exe.config
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\bin\Release\FolderMemo.exe
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\bin\Release\FolderMemo.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\bin\Release\CCL.dll
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\bin\Release\PaintTextBoxClassLib.dll
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\bin\Release\CCL.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\bin\Release\PaintTextBoxClassLib.pdb
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.csprojResolveAssemblyReference.cache
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.CustomTooltip.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.Form_Folder.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.Form_Memo.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.Form_Setting.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.Properties.Resources.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.SystemTray.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.Form_Memo_RIchText.resources
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.csproj.GenerateResource.Cache
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.exe
+C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\FolderMemo\obj\Release\FolderMemo.pdb
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\bin\Release\FolderMemo.exe.config
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.exe
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.pdb
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\bin\Release\FolderMemo.exe
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\bin\Release\FolderMemo.pdb
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\bin\Release\CCL.dll
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\bin\Release\PaintTextBoxClassLib.dll
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\bin\Release\CCL.pdb
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\bin\Release\PaintTextBoxClassLib.pdb
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.csprojResolveAssemblyReference.cache
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.CustomTooltip.resources
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.Form_Folder.resources
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.Form_Memo.resources
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.Form_Setting.resources
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.Properties.Resources.resources
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.SystemTray.resources
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.Form_Memo_RIchText.resources
+C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.csproj.GenerateResource.Cache
+C:\Users\banaple_70\Downloads\Project_FolderMemo_180907\FolderMemo\bin\Release\FolderMemo.exe.config
