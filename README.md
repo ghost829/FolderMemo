@@ -1,4 +1,4 @@
-#![Alt text](/tmpImg/stick-note_32x.ico) FolderMemo
+![Alt text](/tmpImg/stick-note_32x.ico)#FolderMemo
 1. Application Info
   * 폴더메모란?
     * 간단한 메모를 디렉토리형식의 폼에 저장하여 사용하는 메모앱
