@@ -1,5 +1,5 @@
-![Alt text](/tmpImg/stick-note_32x.ico)
-# FolderMemo
+
+# ![Alt text](/tmpImg/stick-note_32x.ico) FolderMemo
 ## 1. Application Info
 -------------
   * 폴더메모란?
