@@ -10,9 +10,13 @@
   * 사용자가 원하는 시점에 파일 저장 및 삭제 가능
   * Drag&Drop 기능으로 기존에 txt파일로 저장하던 메모도 간편하게 옮겨서 쓰기 가능!(반대로 내보내기도!!!)
   * 검색기능!!! 초성 검색도 지원~
-## 3. Licence
+## 3. 제작자
+  * SSW / ghost829@naver.com
+## 4. Licence
   * 이 소스에 대한 저작권은 모두 저에게 있습니다. 하지만 참고해서 고치고 싶으면 고쳐도 됩니다. 좋은건 공유해요 :)
-  Copyright (c) 2018, ghost829 All rights reserved.
+=============
+  Copyright (c) 2018, ghost829
+  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
@@ -34,5 +38,4 @@
  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-## 4. 제작자
-  * SSW / ghost829@naver.com
+=============
