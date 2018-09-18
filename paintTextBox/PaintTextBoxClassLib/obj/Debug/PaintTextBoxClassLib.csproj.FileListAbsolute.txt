@@ -36,3 +36,13 @@ C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\Paint
 C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csproj.GenerateResource.Cache
 C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.dll
 C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.dll
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\bin\Debug\PaintTextBoxClassLib.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csprojResolveAssemblyReference.cache
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.CustomListBox.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.LinesTextBox.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.PaintTextBox.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.Properties.Resources.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csproj.GenerateResource.Cache
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.dll
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.pdb

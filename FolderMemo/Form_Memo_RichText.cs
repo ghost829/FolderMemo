@@ -245,7 +245,15 @@ namespace FolderMemo
             else if (e.KeyCode == Keys.C && e.Control)
             {
                 // RichText Format아닌 문자열 그대로 Copy
-                Clipboard.SetText(richTextBox1.SelectedText);
+                Console.WriteLine(richTextBox1.SelectionStart + " "+ richTextBox1.SelectionLength);
+                if (richTextBox1.SelectedText.Length > 0)
+                {
+                    Clipboard.SetText(richTextBox1.SelectedText);
+                }
+                else
+                {
+                    Clipboard.Clear();
+                }
 
                 e.SuppressKeyPress = true;
                 e.Handled = true;
