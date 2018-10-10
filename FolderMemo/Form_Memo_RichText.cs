@@ -270,11 +270,19 @@ namespace FolderMemo
                 }
                 e.Handled = true;
             }
-            else if (e.KeyCode == Keys.F3)
+            else if(e.KeyCode == Keys.F3 )
             {
-                this.richTextBox1_find_next();
+                if (e.Shift)
+                {
+                    this.richTextBox1_find_prev();
+                }
+                else
+                {
+                    this.richTextBox1_find_next();
+                }
                 e.Handled = true;
             }
+
             else if (e.KeyCode == Keys.Z && e.Control)
             {
                 if (g_item.TEXT == richTextBox1.Text && g_item.TEXT == m_undoText)
@@ -337,6 +345,18 @@ namespace FolderMemo
                 richTextBox1_find_next();
                 e.Handled = true;
             }
+            else if (e.KeyCode == Keys.F3)
+            {
+                if (e.Shift)
+                {
+                    this.richTextBox1_find_prev();
+                }
+                else
+                {
+                    this.richTextBox1_find_next();
+                }
+                e.Handled = true;
+            }
         }
 
         private void richTextBox1_find_next()
@@ -351,6 +371,34 @@ namespace FolderMemo
                     richTextBox1.Select(find_idx, text.Length);
                     richTextBox1.ScrollToCaret();
                 }
+                richTextBox1.Focus();
+                //richTextBox1.SelectionBackColor = richTextBox1.Focused ? richTextBox1.BackColor : Color.Blue;
+            }
+        }
+
+        private void richTextBox1_find_prev()
+        {
+            var text = txt_search.Text;
+            if (text.Length > 0)
+            {
+                List<int> find_idxs = new List<int>();
+                int last_length = richTextBox1.SelectionStart;
+                int last_find_idx = 0;
+                while (last_find_idx > -1)
+                {
+                    last_find_idx = richTextBox1.Find(text, last_find_idx, last_length, RichTextBoxFinds.MatchCase);
+                    if (last_find_idx != -1)
+                    {
+                        find_idxs.Add(last_find_idx);
+                        last_find_idx += text.Length;
+                    }
+                }
+                if(find_idxs.Count > 0)
+                {
+                    richTextBox1.Select(find_idxs[find_idxs.Count - 1], text.Length);
+                    richTextBox1.ScrollToCaret();
+                }
+                
                 richTextBox1.Focus();
                 //richTextBox1.SelectionBackColor = richTextBox1.Focused ? richTextBox1.BackColor : Color.Blue;
             }
