@@ -282,7 +282,6 @@ namespace FolderMemo
                 }
                 e.Handled = true;
             }
-
             else if (e.KeyCode == Keys.Z && e.Control)
             {
                 if (g_item.TEXT == richTextBox1.Text && g_item.TEXT == m_undoText)
@@ -291,6 +290,19 @@ namespace FolderMemo
                     richtextBox1_checktext();
                 }
                 m_undoText = richTextBox1.Text;
+            }
+            else if (e.KeyCode == Keys.End && e.Shift)
+            {
+                // 기존 shift+END는 끝에 NewLine까지 Select해서 조작 시 라인변경이 됨, 수정
+                int lineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
+                int lineLength = richTextBox1.Lines[lineNum].Length;
+                int selectionStart = richTextBox1.SelectionStart;
+                int lineStart = richTextBox1.GetFirstCharIndexOfCurrentLine();
+                int carret_index = (selectionStart - lineStart);
+                System.Diagnostics.Debug.WriteLine("[{0}]{1}", lineNum, lineLength - carret_index);
+                richTextBox1.SelectionLength = Math.Max(lineLength - carret_index, 0);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 
