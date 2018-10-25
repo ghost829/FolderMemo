@@ -294,12 +294,41 @@ namespace FolderMemo
             else if (e.KeyCode == Keys.End && e.Shift)
             {
                 // 기존 shift+END는 끝에 NewLine까지 Select해서 조작 시 라인변경이 됨, 수정
-                int lineNum = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
-                int lineLength = richTextBox1.Lines[lineNum].Length;
+
+                // 1810125 - Wordwrap 적용됬을때 선택영역이 맞지 않음
+                // https://stackoverflow.com/questions/36801006/how-to-get-wrapped-lines-from-multiline-textbox
+                // richTextBox1.Lines는 multiline일때 selectionStart와 매칭되지 않음, 라인 측정해서 계산
+
+                bool continueProcess = true;
+                int i = 1; //Zero Based So Start from 1
+                int j = 0;
+                List<string> lines = new List<string>();
+                List<int> lineStartIdx = new List<int>();
+                lineStartIdx.Add(0);
+                while (continueProcess)
+                {
+                    var index = richTextBox1.GetFirstCharIndexFromLine(i);
+                    if (index != -1)
+                    {
+                        lines.Add(richTextBox1.Text.Substring(j, index - j));
+                        j = index;
+                        i++;
+                        lineStartIdx.Add(index);
+                    }
+                    else
+                    {
+                        lines.Add(richTextBox1.Text.Substring(j, richTextBox1.Text.Length - j));
+                        continueProcess = false;
+                    }
+                }
+                
                 int selectionStart = richTextBox1.SelectionStart;
+                int lineNum = richTextBox1.GetLineFromCharIndex(selectionStart);
+                int lineLength = lines[lineNum].Length;
+                
                 int lineStart = richTextBox1.GetFirstCharIndexOfCurrentLine();
                 int carret_index = (selectionStart - lineStart);
-                System.Diagnostics.Debug.WriteLine("[{0}]{1}", lineNum, lineLength - carret_index);
+                //System.Diagnostics.Debug.WriteLine("[{0}]{1}", lineNum, lineLength - carret_index);
                 richTextBox1.SelectionLength = Math.Max(lineLength - carret_index, 0);
                 e.Handled = true;
                 e.SuppressKeyPress = true;
@@ -314,6 +343,7 @@ namespace FolderMemo
                 e.Handled = true;
             }
         }
+        
 
 
         /// <summary>
