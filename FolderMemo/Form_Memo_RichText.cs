@@ -428,10 +428,10 @@ namespace FolderMemo
 
                 if (find_idx > -1)
                 {
-                    StopRepaint();
+                    //StopRepaint();
                     richTextBox1.Select(find_idx, text.Length);
                     richTextBox1.ScrollToCaret();
-                    StartRepaint();
+                    //StartRepaint();
                 }
                 richTextBox1.Focus();
                 //richTextBox1.SelectionBackColor = richTextBox1.Focused ? richTextBox1.BackColor : Color.Blue;
@@ -440,6 +440,7 @@ namespace FolderMemo
 
         private void richTextBox1_find_prev()
         {
+            StopRepaint();
             var text = txt_search.Text;
             if (text.Length > 0)
             {
@@ -457,15 +458,13 @@ namespace FolderMemo
                 }
                 if(find_idxs.Count > 0)
                 {
-                    StopRepaint();
                     richTextBox1.Select(find_idxs[find_idxs.Count - 1], text.Length);
                     richTextBox1.ScrollToCaret();
-                    StartRepaint();
                 }
-                
-                richTextBox1.Focus();
                 //richTextBox1.SelectionBackColor = richTextBox1.Focused ? richTextBox1.BackColor : Color.Blue;
             }
+            richTextBox1.Focus();
+            StartRepaint();
         }
 
         private void txt_search_button_Click(object sender, EventArgs e)
