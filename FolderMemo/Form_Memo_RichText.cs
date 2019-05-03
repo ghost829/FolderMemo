@@ -300,7 +300,7 @@ namespace FolderMemo
                 }
                 m_undoText = richTextBox1.Text;
             }
-            else if (e.KeyCode == Keys.End && e.Shift)
+            else if ( !e.Control && e.Shift && e.KeyCode == Keys.End )
             {
                 // 기존 shift+END는 끝에 NewLine까지 Select해서 조작 시 라인변경이 됨, 수정
 
@@ -350,6 +350,10 @@ namespace FolderMemo
 
                 e.Handled = true;
                 e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.F5) // 날짜 입력
+            {
+                richTextBox1.SelectedText = DateTime.Now.ToString("yyMMdd");
             }
         }
 
