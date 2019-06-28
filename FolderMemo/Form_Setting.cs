@@ -19,6 +19,51 @@ namespace FolderMemo
             InitializeComponent();
         }
 
+        private void Form_Setting_Load(object sender, EventArgs e)
+        {
+            reloadForm();
+        }
+
+        /// <summary>
+        /// 폼 Layout 세팅
+        /// </summary>
+        public void reloadForm()
+        {
+            txt_memoDataPath.Text = DEFINE.MEMO_DATA_PATH;
+
+            listView1.Items.Clear();
+            for (int i = 0; i < DEFINE.RECENT_MEMO_DATA_PATH.Count; i++)
+            {
+                DEFINE.RECENT_MEMO_DATA data = DEFINE.RECENT_MEMO_DATA_PATH[i];
+                ListViewItem item = new ListViewItem(data.str_name);
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, data.str_full_path == data.str_path || data.str_path.Length == 0 ? "프로그램경로" : data.str_path));
+                // Subitem 단독으로 ForeColor 지정 안됨
+                //ListViewItem.ListViewSubItem subitem_exist = new ListViewItem.ListViewSubItem(item, data.is_exist_local ? "O" : "X");
+                //subitem_exist.ForeColor = data.is_exist_local ? Color.Green : Color.Red;
+                //item.SubItems.Add(subitem_exist);
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, data.is_exist_local ? "O" : "X"));
+                item.ForeColor = data.is_exist_local ? Color.LightSeaGreen : Color.Red;
+                listView1.Items.Add(item);
+            }
+            for(int i=0; i < listView1.Columns.Count; i++)
+            {
+                listView1.Columns[i].Width = -2;
+            }
+        }
+
+
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if( listView1.SelectedItems.Count == 1 )
+            {
+                int itemIndex = listView1.SelectedItems[0].Index;
+                DEFINE.RECENT_MEMO_DATA data = DEFINE.RECENT_MEMO_DATA_PATH[itemIndex];
+                txt_memoDataPath.Text = data.str_full_path;
+            }
+        }
+
+
         private void btn_apply_Click(object sender, EventArgs e)
         {
             string memoDataPath = txt_memoDataPath.Text;
@@ -36,12 +81,39 @@ namespace FolderMemo
         {
             this.Close();
         }
-
-        private void Form_Setting_Load(object sender, EventArgs e)
+        
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            txt_memoDataPath.Text = DEFINE.MEMO_DATA_PATH;
+            if (sender == openFileDialog1)
+            {
+                txt_memoDataPath.Text = openFileDialog1.FileName;
+            }
         }
 
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if( e.Button == MouseButtons.Right)
+            {
+                Point p = e.Location;
+                
+                ctxt_listview1.Show(listView1.PointToScreen(e.Location));
+            }
+        }
 
+        #region ## Form Context Menu
+        private void ctxt_listview1_delete_Click(object sender, EventArgs e)
+        {
+            if( listView1.SelectedItems.Count == 1 )
+            {
+                int itemIndex = listView1.SelectedItems[0].Index;
+                occurred_event(DEFINE.EVENTTYPE.EVENTTYPE_DELETE_RECENT_MEMODATAPATH, itemIndex);
+            }
+        }
+        #endregion
+
+        private void btn_search_data_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog(this);
+        }
     }
 }

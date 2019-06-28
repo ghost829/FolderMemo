@@ -44,6 +44,10 @@ namespace FolderMemo
         /// 변수로 사용할꺼임
         /// </summary>
         public static String MEMO_DATA_PATH;
+        /// <summary>
+        /// 최근 메모 데이터  정보파일 경로 모음
+        /// </summary>
+        public static List<RECENT_MEMO_DATA> RECENT_MEMO_DATA_PATH = new List<RECENT_MEMO_DATA>();
 
         /// <summary>
         /// Config파일 - TopMost 속성 명
@@ -59,6 +63,11 @@ namespace FolderMemo
         /// Config파일 - 메모 데이터 경로
         /// </summary>
         public const String CONFIG_SETTING_MEMODATAPATH = "MemoDataPath";
+
+        /// <summary>
+        /// Config파일 - 최근 Open한 메모 데이터 경로
+        /// </summary>
+        public const String CONFIG_SETTING_RECENT_MEMODATAPATH = "RecentMemoDataPath";
 
         /// <summary>
         /// XML 노드의 값이 문자열
@@ -96,6 +105,8 @@ namespace FolderMemo
             EVENTTYPE_DELETEGROUP, // 그룹 삭제 시
             EVENTTYPE_RENAME,      // 이름 변경 시
             EVENTTYPE_SAVEMEMODATAPATH // 메모 데이터 경로 저장
+            , EVENTTYPE_SAVE_RECENT_MEMODATAPATH // 최근 메모 데이터 경로 저장
+            , EVENTTYPE_DELETE_RECENT_MEMODATAPATH // 최근 메모 데이터 경로 삭제
         };
 
         /// <summary>
@@ -111,5 +122,16 @@ namespace FolderMemo
         public const String NODE_MEMONAME = "MEMO";
 
         public const String NODE_GROUPNAME = "GROUP";
+
+        /// <summary>
+        /// 최근 메모정보
+        /// </summary>
+        public struct RECENT_MEMO_DATA
+        {
+            public string str_full_path; // 전체경로
+            public string str_name; // 파일명만
+            public string str_path; // 파일경로만
+            public bool is_exist_local; // 파일 존재하는지 여부
+        }
     }
 }

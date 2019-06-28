@@ -17,6 +17,7 @@ namespace FolderMemo
         private static XmlDocument configDoc;
         //private List<Form_Memo> memoForms = new List<Form_Memo>();
         private List<Form_Memo_RIchText> memoForms = new List<Form_Memo_RIchText>();
+        private string m_default_memo_path = System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.MEMO_DATA_FILENAME; // 메모데이터 기본위치값
 
         public SystemTray()
         {
@@ -77,6 +78,7 @@ namespace FolderMemo
             // 환경설정 LOAD
             configDoc = Common.XmlControl.getInstance().xmlLoad(System.Windows.Forms.Application.StartupPath +"\\" + DEFINE.CONFIG_FILENAME);
             XmlNode settingNode = configDoc.SelectSingleNode("//SETTING");
+            
             if (settingNode == null)
             {
                 StringBuilder sb = new StringBuilder();
@@ -90,7 +92,7 @@ namespace FolderMemo
                 List<String[]> tmpList = new List<string[]>();
                 string[] tmpStrArr1 = { DEFINE.CONFIG_SETTING_TOPMOST, "FALSE" }; // TOPMOST
                 string[] tmpStrArr2 = { DEFINE.CONFIG_SETTING_CLOSERECT, "" };      // Folder Form's Rectangle
-                string[] tmpStrArr3 = { DEFINE.CONFIG_SETTING_MEMODATAPATH, System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.MEMO_DATA_FILENAME }; // 메모데이터 기본위치값
+                string[] tmpStrArr3 = { DEFINE.CONFIG_SETTING_MEMODATAPATH, m_default_memo_path }; // 메모데이터 기본위치값
 
                 tmpList.Add(tmpStrArr1);
                 tmpList.Add(tmpStrArr2);
@@ -113,21 +115,66 @@ namespace FolderMemo
                 settingNode = configDoc.SelectSingleNode("//SETTING");
             }
 
-            string path = String.Format("./{0}", DEFINE.CONFIG_SETTING_MEMODATAPATH);
-            XmlNode MemoPathNode = settingNode.SelectSingleNode(path);
-            if(MemoPathNode != null)
-             DEFINE.MEMO_DATA_PATH = MemoPathNode.InnerText;
-
-            if (!System.IO.File.Exists(DEFINE.MEMO_DATA_PATH) || MemoPathNode == null)
-                DEFINE.MEMO_DATA_PATH = System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.MEMO_DATA_FILENAME;
+            // 메모데이터 경로 Setting
+            string memo_path = null;
+            XmlNode MemoPathNode = settingNode.SelectSingleNode(String.Format("./{0}", DEFINE.CONFIG_SETTING_MEMODATAPATH));
+            if (MemoPathNode != null)
+            {
+                memo_path = MemoPathNode.InnerText;
+            }
+            this.loadMemoFile(memo_path);
 
             this.Icon = Properties.Resources.icon_stick_note_32x;
             this.Text = "FolderMemo";
 
-            showFormFolder();
-
             base.OnLoad(e);
         }
+        
+        private void loadMemoFile(string memoFile)
+        {
+            string tmp_memo_path = memoFile;
+            if (!System.IO.File.Exists(memoFile))
+            {
+                // 메모파일이 존재하지 않음
+                tmp_memo_path = m_default_memo_path;
+            }
+
+            XmlDocument init_memo_doc = Common.XmlControl.getInstance().xmlLoad(tmp_memo_path);
+            if (init_memo_doc.SelectSingleNode("//MEMODATA") == null)
+            {
+                MessageBox.Show("해당 경로 파일은 메모데이터가 아닙니다.");
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "데이터 파일 열기";
+                dialog.Filter = "Data파일(*.xml)|*.xml";
+                dialog.FileOk += openMemoFileDialog_FileOk;
+                dialog.ShowDialog();
+            }
+            else {
+                DEFINE.MEMO_DATA_PATH = memoFile;
+                XmlNode settingNode = configDoc.SelectSingleNode("//SETTING");
+                XmlNode MemoPathNode = settingNode.SelectSingleNode(String.Format("./{0}", DEFINE.CONFIG_SETTING_MEMODATAPATH));
+                MemoPathNode.InnerText = memoFile;
+                if (Common.XmlControl.getInstance().xmlSave(configDoc, System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME))
+                    configDoc = Common.XmlControl.getInstance().xmlLoad(System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME);
+
+                // 최근 Open한 메모데이터 경로 Setting
+                reload_recent_memo_data();
+
+                // 메인폼 Show
+                showFormFolder();
+            }
+        }
+
+        private void openMemoFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (sender is OpenFileDialog)
+            {
+                OpenFileDialog dialog = (OpenFileDialog)sender;
+                string fileName = dialog.FileName;
+                loadMemoFile(fileName);
+            }
+        }
+
 
         void trayMenu_Popup(object sender, EventArgs e)
         {
@@ -556,28 +603,133 @@ namespace FolderMemo
         /// <returns></returns>
         private bool settingForm_occurred_event(DEFINE.EVENTTYPE type, object obj)
         {
-            // 메모 폼이 현재 열려있으면 폼을 닫음
-            for (int i = memoForms.Count - 1; i >= 0; i--)
+            if (type == DEFINE.EVENTTYPE.EVENTTYPE_SAVEMEMODATAPATH) // 메모 Path 지정
             {
-                Item tmpItem = memoForms[i].g_item;
-                memoForms[i].closeForce = true;
-                memoForms[i].Close();
+                string str_memo_path = (String)obj;
+                if (!System.IO.File.Exists(str_memo_path))
+                {
+                    MessageBox.Show("메모데이터가 해당 경로에 존재하지 않습니다.");
+                    return false;
+                }
+
+                XmlDocument memoDoc = Common.XmlControl.getInstance().xmlLoad(str_memo_path);
+                XmlNode memoNode = memoDoc.SelectSingleNode("//MEMODATA");
+                if (memoNode == null)
+                {
+                    MessageBox.Show("해당 경로 파일은 메모데이터가 아닙니다.");
+                    return false;
+                }
+
+                // 메모 폼이 현재 열려있으면 폼을 닫음
+                for (int i = memoForms.Count - 1; i >= 0; i--)
+                {
+                    Item tmpItem = memoForms[i].g_item;
+                    memoForms[i].closeForce = true;
+                    memoForms[i].Close();
+                }
+
+                // 폴더 폼 닫음
+                if (mainFolder != null) {
+                    mainFolder.Close();
+                }
+
+                XmlNode settingNode = configDoc.SelectSingleNode("//SETTING");
+                XmlNode memoPathNode = settingNode.SelectSingleNode(String.Format("./{0}", DEFINE.CONFIG_SETTING_MEMODATAPATH));
+
+                memoPathNode.InnerText = str_memo_path;
+                DEFINE.MEMO_DATA_PATH = str_memo_path;
+
+                if (Common.XmlControl.getInstance().xmlSave(configDoc, System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME))
+                    configDoc = Common.XmlControl.getInstance().xmlLoad(System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME);
+
+                // 최근메모에 존재하는지 검사 후 저장
+                settingForm_occurred_event(DEFINE.EVENTTYPE.EVENTTYPE_SAVE_RECENT_MEMODATAPATH, obj);
+
+                showFormFolder();
+            }
+            else if ( type == DEFINE.EVENTTYPE.EVENTTYPE_SAVE_RECENT_MEMODATAPATH) // 최근 메모 Path 저장
+            {
+                // 최근 Open한 메모리스트에 존재하는지 검사 후 없으면 추가
+                XmlNode settingNode = configDoc.SelectSingleNode("//SETTING");
+                bool is_exist = false;
+                XmlNodeList recentMemoPathNodes = settingNode.SelectNodes(String.Format("./{0}", DEFINE.CONFIG_SETTING_RECENT_MEMODATAPATH));
+                for (int i = 0; i < recentMemoPathNodes.Count; i++)
+                {
+                    XmlNode item = recentMemoPathNodes.Item(i);
+                    if (item.InnerText == DEFINE.MEMO_DATA_PATH)
+                    {
+                        is_exist = true;
+                        break;
+                    }
+                }
+                if (!is_exist)
+                {
+                    XmlNode tmpNode = configDoc.CreateNode(XmlNodeType.Element, DEFINE.CONFIG_SETTING_RECENT_MEMODATAPATH, "");
+                    tmpNode.InnerText = (String)obj;
+                    settingNode.AppendChild(tmpNode);
+                    if (Common.XmlControl.getInstance().xmlSave(configDoc, System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME))
+                        configDoc = Common.XmlControl.getInstance().xmlLoad(System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME);
+                }
+
+                // 데이터 및 Setting Form Relaod
+                reload_recent_memo_data();
+                if( mainSetting != null)
+                {
+                    mainSetting.reloadForm();
+                }
+            }
+            else if (type == DEFINE.EVENTTYPE.EVENTTYPE_DELETE_RECENT_MEMODATAPATH) // 최근 메모 Path 삭제
+            {
+                int idx = (int)obj; // index 순서
+                XmlNode settingNode = configDoc.SelectSingleNode("//SETTING");
+                XmlNodeList RecentMemoPathNodes = settingNode.SelectNodes(String.Format("./{0}", DEFINE.CONFIG_SETTING_RECENT_MEMODATAPATH));
+                if( idx < RecentMemoPathNodes.Count )
+                {
+                    // 노드 삭제
+                    XmlNode tmpNode = RecentMemoPathNodes.Item(idx);
+                    tmpNode.ParentNode.RemoveChild(tmpNode);
+
+                    // 저장
+                    if (Common.XmlControl.getInstance().xmlSave(configDoc, System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME))
+                        configDoc = Common.XmlControl.getInstance().xmlLoad(System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME);
+                }
+                // 데이터 및 Setting Form Relaod
+                reload_recent_memo_data();
+                if (mainSetting != null)
+                {
+                    mainSetting.reloadForm();
+                }
             }
 
-            // 폴더 폼 닫음
-            mainFolder.Close();
+            return false;
+        }
+
+        /// <summary>
+        /// 최근 Open한 메모데이터 경로를 데이터 DEFINE.RECENT_MEMO_DATA_PATH에 Setting
+        /// </summary>
+        private void reload_recent_memo_data()
+        {
+            DEFINE.RECENT_MEMO_DATA_PATH.Clear();
 
             XmlNode settingNode = configDoc.SelectSingleNode("//SETTING");
-            XmlNode memoPathNode = settingNode.SelectSingleNode(String.Format("//{0}", DEFINE.CONFIG_SETTING_MEMODATAPATH));
-
-            memoPathNode.InnerText = (String)obj;
-            DEFINE.MEMO_DATA_PATH = (String)obj;
-            if (Common.XmlControl.getInstance().xmlSave(configDoc, System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME))
-                configDoc = Common.XmlControl.getInstance().xmlLoad(System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME);
-
-            showFormFolder();
-
-            return false;
+            XmlNodeList RecentMemoPathNodes = settingNode.SelectNodes(String.Format("./{0}", DEFINE.CONFIG_SETTING_RECENT_MEMODATAPATH));
+            
+            if (RecentMemoPathNodes.Count > 0)
+            {
+                for (int i = 0; i < RecentMemoPathNodes.Count; i++)
+                {
+                    string str_full_path = RecentMemoPathNodes.Item(i).InnerText;
+                    string fileName = System.IO.Path.GetFileName(str_full_path);
+                    string filePath = System.IO.Path.GetDirectoryName(str_full_path);
+                    bool tmp_is_exist = System.IO.File.Exists(str_full_path);
+                    DEFINE.RECENT_MEMO_DATA data = new DEFINE.RECENT_MEMO_DATA();
+                    data.str_full_path = str_full_path;
+                    data.str_name = fileName;
+                    data.str_path = filePath;
+                    data.is_exist_local = tmp_is_exist;
+                    DEFINE.RECENT_MEMO_DATA_PATH.Add(data);
+                }
+            }
         }
 
 
@@ -610,7 +762,8 @@ namespace FolderMemo
                 };
                 mainSetting.occurred_event += settingForm_occurred_event;
 
-                mainSetting.Text = DEFINE.TRAY_NAME;
+                mainSetting.Text = DEFINE.TRAY_NAME + " SETTING";
+                mainSetting.Icon = Properties.Resources.icon_stick_note_32x;
                 mainSetting.ShowInTaskbar = false;
                 mainSetting.Show(this);
             }
