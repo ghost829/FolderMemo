@@ -3,4 +3,5 @@
   <TopMost>FALSE</TopMost>
   <Rect>1375, 63, 420, 673</Rect>
   <MemoDataPath>data.xml</MemoDataPath>
+  <RecentMemoDataPath>data.xml</RecentMemoDataPath>
 </SETTING>

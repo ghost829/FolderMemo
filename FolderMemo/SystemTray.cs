@@ -17,7 +17,9 @@ namespace FolderMemo
         private static XmlDocument configDoc;
         //private List<Form_Memo> memoForms = new List<Form_Memo>();
         private List<Form_Memo_RIchText> memoForms = new List<Form_Memo_RIchText>();
-        private string m_default_memo_path = System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.MEMO_DATA_FILENAME; // 메모데이터 기본위치값
+        private string m_default_memo_path = System.IO.Path.Combine(
+            System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString())
+            , System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.MEMO_DATA_FILENAME); // 메모데이터 기본위치값
 
         public SystemTray()
         {
@@ -150,10 +152,10 @@ namespace FolderMemo
                 dialog.ShowDialog();
             }
             else {
-                DEFINE.MEMO_DATA_PATH = memoFile;
+                DEFINE.MEMO_DATA_PATH = tmp_memo_path;
                 XmlNode settingNode = configDoc.SelectSingleNode("//SETTING");
                 XmlNode MemoPathNode = settingNode.SelectSingleNode(String.Format("./{0}", DEFINE.CONFIG_SETTING_MEMODATAPATH));
-                MemoPathNode.InnerText = memoFile;
+                MemoPathNode.InnerText = tmp_memo_path;
                 if (Common.XmlControl.getInstance().xmlSave(configDoc, System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME))
                     configDoc = Common.XmlControl.getInstance().xmlLoad(System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.CONFIG_FILENAME);
 
@@ -895,22 +897,7 @@ namespace FolderMemo
             {
                 case WM_SYSCOMMAND:
                     int command = m.WParam.ToInt32() & 0xfff0;
-
-                    //if (command == SC_MINIMIZE)
-                    //{
-                    //    this.Hide();         // 창은 최소화 되지만 taskbar가 새로 생성됨
-                    //    //this.ShowInTaskbar = true;
-                    //    //ShowWindow(Handle, SW_FORCEMINIMIZE); //기본 minimize
-                    //    //return;
-                    //}
-                    //else if (command == SC_RESTORE)
-                    //{
-                    //    if (memoForms.Count == 0)
-                    //    {
-                    //        showFormFolder();
-                    //        //return;
-                    //    }
-                    //}
+                    
                     if(command == SC_MINIMIZE || command == SC_RESTORE)
                     {
                         if (mainFolder == null)

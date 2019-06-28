@@ -43,38 +43,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CCL.dll" size="36352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CCL.dll" size="33280">
       <assemblyIdentity name="CCL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>SsUFUN7H7bKk/EVl9c/DtDR5VCA=</dsig:DigestValue>
+        <dsig:DigestValue>3mlJZQV2r+m99gU2dWZ1P6s854s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="474112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="467456">
       <assemblyIdentity name="FolderMemo" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gjXMR3MOpdcuTJvIf5j3lcLnOmY=</dsig:DigestValue>
+        <dsig:DigestValue>fFTsC61tylNgu9FBc7PFqnjpWNk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PaintTextBoxClassLib.dll" size="91648">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PaintTextBoxClassLib.dll" size="82432">
       <assemblyIdentity name="PaintTextBoxClassLib" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>FvuSb4h5suGG2d4BuXcIZgj0ffI=</dsig:DigestValue>
+        <dsig:DigestValue>PlBHO+8BFkHLI0jRkQD9kZW9Plk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

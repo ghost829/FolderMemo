@@ -29,7 +29,7 @@ namespace FolderMemo
         /// </summary>
         public void reloadForm()
         {
-            txt_memoDataPath.Text = DEFINE.MEMO_DATA_PATH;
+            setMemoDataPathText(DEFINE.MEMO_DATA_PATH);   
 
             listView1.Items.Clear();
             for (int i = 0; i < DEFINE.RECENT_MEMO_DATA_PATH.Count; i++)
@@ -59,7 +59,7 @@ namespace FolderMemo
             {
                 int itemIndex = listView1.SelectedItems[0].Index;
                 DEFINE.RECENT_MEMO_DATA data = DEFINE.RECENT_MEMO_DATA_PATH[itemIndex];
-                txt_memoDataPath.Text = data.str_full_path;
+                setMemoDataPathText(data.str_full_path);
             }
         }
 
@@ -67,6 +67,11 @@ namespace FolderMemo
         private void btn_apply_Click(object sender, EventArgs e)
         {
             string memoDataPath = txt_memoDataPath.Text;
+            string filePath = System.IO.Path.GetDirectoryName(memoDataPath);
+            if(filePath == null || filePath.Length == 0 || filePath == memoDataPath)
+            {
+                memoDataPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString()), memoDataPath);
+            }
             if (!System.IO.File.Exists(memoDataPath))
             {
                 MessageBox.Show("메모데이터가 해당 경로에 존재하지 않습니다.");
@@ -86,7 +91,7 @@ namespace FolderMemo
         {
             if (sender == openFileDialog1)
             {
-                txt_memoDataPath.Text = openFileDialog1.FileName;
+                setMemoDataPathText(openFileDialog1.FileName);
             }
         }
 
@@ -114,6 +119,21 @@ namespace FolderMemo
         private void btn_search_data_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog(this);
+        }
+
+        /// <summary>
+        /// 데이터 파일 경로 text 설정
+        /// </summary>
+        /// <param name="str_path"></param>
+        private void setMemoDataPathText(string str_path)
+        {
+            // 메모파일 경로가 현재 실행된 프로그램의 경로와 같다면 경로 단축
+            string str_memo_data_path = str_path;
+            if (System.IO.Path.GetDirectoryName(str_memo_data_path) == System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString()))
+            {
+                str_memo_data_path = System.IO.Path.GetFileName(str_memo_data_path);
+            }
+            txt_memoDataPath.Text = str_memo_data_path;
         }
     }
 }
