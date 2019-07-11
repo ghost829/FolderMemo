@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <INFO>
-  <VERSION>1.0.0.0</VERSION>
+  <VERSION>1.0.0.1</VERSION>
   <FILE_INFO dir="FolderMemo">
     <ITEM>FolderMemo.exe</ITEM>
     <ITEM>CCL.dll</ITEM>
     <ITEM>PaintTextBoxClassLib.dll</ITEM>
     <ITEM>config.xml</ITEM>
     <ITEM>data.xml</ITEM>
+    <ITEM>readme.txt</ITEM>
   </FILE_INFO>
 </INFO>
