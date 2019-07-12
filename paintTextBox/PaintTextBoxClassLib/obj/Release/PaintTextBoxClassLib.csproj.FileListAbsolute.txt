@@ -29,7 +29,6 @@ C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\paintTextBox\PaintTextBo
 C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.pdb
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\bin\Release\PaintTextBoxClassLib.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\bin\Release\PaintTextBoxClassLib.pdb
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.csprojResolveAssemblyReference.cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.CustomListBox.resources
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.LinesTextBox.resources
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.PaintTextBox.resources
@@ -37,3 +36,4 @@ C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLi
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.csproj.GenerateResource.Cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Release\PaintTextBoxClassLib.csprojResolveAssemblyReference.cache

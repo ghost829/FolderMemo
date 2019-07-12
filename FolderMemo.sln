@@ -1,11 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 14 for Windows Desktop
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderMemo", "FolderMemo\FolderMemo.csproj", "{49D0B217-ABCF-49A1-BCC6-9AB80A171A4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlLibrary", "CustomControlLibrary\CustomControlLibrary.csproj", "{9F8A2843-4A4E-4AEC-A285-FF40C86DF13F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaintTextBoxClassLib", "paintTextBox\PaintTextBoxClassLib\PaintTextBoxClassLib.csproj", "{36DF8DCD-6743-4D99-8ED5-1B4B3F4C72CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderMemoUpdate", "FolderMemoUpdate\FolderMemoUpdate.csproj", "{583F5D21-1A1B-47EB-953E-575372AA73A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F425423D-B15D-44E4-AF5D-4AB85A75654B}"
+	ProjectSection(SolutionItems) = preProject
+		Publish\FolderMemo\readme.txt = Publish\FolderMemo\readme.txt
+		Publish\version.xml = Publish\version.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +35,10 @@ Global
 		{36DF8DCD-6743-4D99-8ED5-1B4B3F4C72CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36DF8DCD-6743-4D99-8ED5-1B4B3F4C72CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36DF8DCD-6743-4D99-8ED5-1B4B3F4C72CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{583F5D21-1A1B-47EB-953E-575372AA73A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583F5D21-1A1B-47EB-953E-575372AA73A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583F5D21-1A1B-47EB-953E-575372AA73A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583F5D21-1A1B-47EB-953E-575372AA73A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

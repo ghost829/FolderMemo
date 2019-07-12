@@ -36,6 +36,8 @@ C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\F
 C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\FolderMemo\obj\Release\FolderMemo.csproj.GenerateResource.Cache
 C:\Users\banaple_70\Downloads\Project_FolderMemo_180907\FolderMemo\bin\Release\FolderMemo.exe.config
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\FolderMemo.exe.config
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\FolderMemo.exe.manifest
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\FolderMemo.application
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\FolderMemo.exe
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\FolderMemo.pdb
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\CCL.dll
@@ -51,10 +53,9 @@ C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMem
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.SystemTray.resources
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.Form_Memo_RIchText.resources
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.csproj.GenerateResource.Cache
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.exe
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.pdb
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\FolderMemo.exe.manifest
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\bin\Release\FolderMemo.application
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.TrustInfo.xml
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.exe.manifest
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.application
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.exe
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Release\FolderMemo.FolderMemoAboutBox.resources

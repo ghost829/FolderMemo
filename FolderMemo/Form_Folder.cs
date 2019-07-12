@@ -356,7 +356,8 @@ namespace FolderMemo
 
             if (path != "/")
             {
-                this.btn_upperPath.Image = Properties.Resources.upperArrow_enable;
+                //this.btn_upperPath.Image = Properties.Resources.upperArrow_enable;
+                this.btn_upperPath.BackgroundImage = Properties.Resources.folder_up;
                 this.btn_upperPath.Enabled = true;
 
                 String[] paths = path.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
@@ -367,7 +368,8 @@ namespace FolderMemo
             }
             else
             {
-                this.btn_upperPath.Image = Properties.Resources.upperArrow_disable;
+                //this.btn_upperPath.Image = Properties.Resources.upperArrow_disable;
+                this.btn_upperPath.BackgroundImage = Properties.Resources.folder_up_disable;
                 this.btn_upperPath.Enabled = false;
             }
 

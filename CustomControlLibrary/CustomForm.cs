@@ -71,6 +71,7 @@ namespace CustomControlLibrary
         private Image m_closeBtnNormalImage; //닫기 버튼 노멀 이미지
         private Image m_closeBtnHighLightImage; //닫기 버튼 하이라이트 이미지
         private Image m_closeBtnMouseOverImage; //닫기 버튼에 마우스 오버시 이미지
+        private bool  m_closeBtnVisible; // 닫기버튼 Visible여부
 
         private Rectangle minimizeButtonRect; //최소화버튼 위치
         private bool isMinimizeFormButtonMouseDown = false; //최소화버튼 눌렀을때 true
@@ -307,6 +308,20 @@ namespace CustomControlLibrary
             set
             {
                 m_closeBtnMouseOverImage = value;
+                this.Invalidate();
+            }
+        }
+
+        [Browsable(true), Category("CustomForm"), Description("닫기 버튼 VISIBLE 여부")]
+        public Boolean TopRight_CloseBtnVisible
+        {
+            get
+            {
+                return m_closeBtnVisible;
+            }
+            set
+            {
+                m_closeBtnVisible = value;
                 this.Invalidate();
             }
         }
@@ -759,6 +774,7 @@ namespace CustomControlLibrary
             m_titleboxColor = Color.DodgerBlue;
             m_radius = 5;
             m_titleFont = new Font("굴림", 9);
+            m_closeBtnVisible = true;
             m_minimizeButtonVisible = true;
             m_maximizeButtonVisible = true;
             m_vertexDirection = RectangleCorners.Top;
@@ -795,6 +811,7 @@ namespace CustomControlLibrary
             m_titleboxColor = Color.DodgerBlue;
             m_radius = 5;
             m_titleFont = new Font("굴림", 9);
+            m_closeBtnVisible = true;
             m_minimizeButtonVisible = true;
             m_maximizeButtonVisible = true;
             m_vertexDirection = RectangleCorners.Top;
@@ -1054,7 +1071,9 @@ namespace CustomControlLibrary
                 thisRegion.Dispose();
             }
             else
+            {
                 this.Region = new Region(this.ClientRectangle);
+            }
 
             // 폼 제목표시줄 구분할 사각형 지정
             GraphicsPath tmpPath = new GraphicsPath();
@@ -1087,48 +1106,69 @@ namespace CustomControlLibrary
             {
                 // 우측 상단 버튼메뉴 Y값 측정
                 int y = (m_topBorderLine / 2) - (m_btnsSize.Height / 2);
+                int idx = 1;
 
                 // 닫기버튼 Rect지정
-                closeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - m_btnsSize.Width, (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                if ( m_closeBtnVisible){
+                    closeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * idx), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    idx += 1;
+                }else{
+                    closeButtonRect = new Rectangle();
+                }
 
                 if (TopRight_MaximizeButtonVisible && TopRight_MinimizeButtonVisible)
                 {
                     // 최대화버튼 Rect지정
-                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * 2), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * idx), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    idx += 1;
                     // 최소화버튼 Rect지정
-                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * 3), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * idx), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    idx += 1;
                 }
                 else if (TopRight_MaximizeButtonVisible)
                 {
-                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * 2), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * idx), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    idx += 1;
                 }
                 else if (TopRight_MinimizeButtonVisible)
                 {
-                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * 2), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - y - (m_btnsSize.Width * idx), (m_topBorderLine / 2) - (m_btnsSize.Height / 2)), m_btnsSize);
+                    idx += 1;
                 }
             }
             else
             {
                 int x = this.m_btnsLocation.X;
                 int y = this.m_btnsLocation.Y;
+                int idx = 1;
 
                 // 닫기버튼 Rect지정
-                closeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - m_btnsSize.Width, y), m_btnsSize);
+                if (m_closeBtnVisible)
+                {
+                    closeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * idx), y), m_btnsSize);
+                }else
+                {
+                    closeButtonRect = new Rectangle();
+                }
 
                 if (TopRight_MaximizeButtonVisible && TopRight_MinimizeButtonVisible)
                 {
                     // 최대화버튼 Rect지정
-                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * 2), y), m_btnsSize);
+                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * idx), y), m_btnsSize);
+                    idx += 1;
                     // 최소화버튼 Rect지정
-                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * 3), y), m_btnsSize);
+                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * idx), y), m_btnsSize);
+                    idx += 1;
                 }
                 else if (TopRight_MaximizeButtonVisible)
                 {
-                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * 2), y), m_btnsSize);
+                    maximizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * idx), y), m_btnsSize);
+                    idx += 1;
                 }
                 else if (TopRight_MinimizeButtonVisible)
                 {
-                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * 2), y), m_btnsSize);
+                    minimizeButtonRect = new Rectangle(new Point(this.ClientSize.Width - x - (m_btnsSize.Width * idx), y), m_btnsSize);
+                    idx += 1;
                 }
             }
 
@@ -1150,7 +1190,7 @@ namespace CustomControlLibrary
                     else
                         e.Graphics.DrawImage(TopRight_CloseBtnMouseOverImage, closeButtonRect);
                 }
-                else
+                else if ( !closeButtonRect.IsEmpty )
                 {
                     if (TopRight_CloseBtnNormalImage == null)
                         ControlPaint.DrawCaptionButton(e.Graphics, closeButtonRect, CaptionButton.Close, ButtonState.Normal);

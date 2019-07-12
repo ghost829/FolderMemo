@@ -10,10 +10,15 @@ namespace FolderMemo
 {
     class SystemTray : Form
     {
+        private const string m_appName_folderMemo = "FolderMemo";
+        private const string m_appName_folderMemoAutoUpdate = "FolderMemoUpdate";
+        private const string m_runKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+
         private NotifyIcon trayIcon;
         private ContextMenu trayMenu; //트레이 우클릭 메뉴
         private static Form_Folder mainFolder;
         private static Form_Setting mainSetting;
+        private static FolderMemoAboutBox m_form_about; // About폼
         private static XmlDocument configDoc;
         //private List<Form_Memo> memoForms = new List<Form_Memo>();
         private List<Form_Memo_RIchText> memoForms = new List<Form_Memo_RIchText>();
@@ -41,18 +46,30 @@ namespace FolderMemo
             ///**************************************************/
 
             // Create a simple tray menu with only one item.
+            // 시스템 트레이 우클릭 메뉴 설정
             trayMenu = new ContextMenu();
-            trayMenu.MenuItems.Add("About", ShowAboutThis);
+            trayMenu.MenuItems.Add("&About", ShowAboutThis);
+            trayMenu.MenuItems.Add("&Update", runUpdate);
+            trayMenu.MenuItems.Add("-");
 
-            MenuItem menu_startup = new MenuItem("StartUp", SetStartup);
-            if (this.getStartupYN())
+            MenuItem menu_startup = new MenuItem("&StartUp_FolderMemo", setup_startup_FolderMemo);
+            menu_startup.Tag = m_appName_folderMemo;
+            // 윈도우 시작시 자동 실행 설정
+            if (this.getStartUpYN_FolderMemo())
                 menu_startup.Checked = true;
             trayMenu.MenuItems.Add(menu_startup);
+            
+            MenuItem menu_startup_autoUpdate = new MenuItem("&StartUp_AutoUpdate", setup_startup_FolderMemoAutoUpdate);
+            menu_startup_autoUpdate.Tag = m_appName_folderMemoAutoUpdate;
+            // 윈도우 시작시 자동 실행 설정
+            if (this.getStartUpYN_FolderMemoAutoUpdate())
+                menu_startup_autoUpdate.Checked = true;
+            trayMenu.MenuItems.Add(menu_startup_autoUpdate);
 
-            trayMenu.MenuItems.Add("Setting", ShowSettingForm);
+            trayMenu.MenuItems.Add("&Setting", ShowSettingForm);
             
             trayMenu.MenuItems.Add("-");
-            trayMenu.MenuItems.Add("Exit", OnExit);
+            trayMenu.MenuItems.Add("E&xit", OnExit);
             trayMenu.Popup += trayMenu_Popup;
 
             // Create a tray icon. In this exaple we use a
@@ -740,17 +757,129 @@ namespace FolderMemo
             Application.Exit();
         }
 
+        #region AboutForm
+        /// <summary>
+        /// About Form 표시
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowAboutThis(object sender, EventArgs e)
         {
-            MessageBox.Show(DEFINE.MESSAGE_ABOUT);
+            //MessageBox.Show(DEFINE.MESSAGE_ABOUT);
+            if( m_form_about == null)
+            {
+                m_form_about = new FolderMemoAboutBox();
+                m_form_about.FormClosed += new FormClosedEventHandler(AboutFormClosed);
+                m_form_about.Show();
+            }
+            else
+            {
+                m_form_about.Focus();
+            }
+        }
+        void AboutFormClosed(object sender, FormClosedEventArgs e)
+        {
+            m_form_about = null;
+        }
+        #endregion
+
+        /// <summary>
+        /// App Update 프로그램 실행
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void runUpdate(object sender, EventArgs e)
+        {
+            string fileName = "FolderMemoUpdate.exe";
+            if(! System.IO.File.Exists(fileName) )
+            {
+                MessageBox.Show(this, "업데이트 파일인 FolderMemoUpdate.exe이 없습니다", "파일이 존재하지 않음");
+                return;
+            }
+            try
+            {
+                System.Diagnostics.Process.Start("FolderMemoUpdate.exe");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(this, ex.ToString(), ex.Message);
+            }
         }
 
-        private void SetStartup(object sender, EventArgs e)
+        #region ※ FolderMemo 자동실행
+        /// <summary>
+        /// 시작시 FolderMemo 자동 실행 버튼 터치 Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void setup_startup_FolderMemo(object sender, EventArgs e)
         {
-            setStartup(!getStartupYN());
+            setStartup_FolderMemo(!getStartUpYN_FolderMemo());
             MenuItem item = (MenuItem)sender;
             item.Checked = !item.Checked;
+            // FolderMemoStartup 키면 자동업데이트 해제 (중복실행되므로)
+            if (item.Checked)
+            {
+                setStartup_FolderMemo(false);
+                var contextMenu = item.GetContextMenu();
+                var menus = contextMenu.MenuItems;
+                foreach (MenuItem tmpMenu in menus)
+                {
+                    if (tmpMenu.Tag != null && tmpMenu.Tag.Equals(m_appName_folderMemoAutoUpdate))
+                    {
+                        tmpMenu.Checked = false;
+                        break;
+                    }
+                }
+            }
         }
+
+        private bool getStartUpYN_FolderMemo()
+        {
+            return this.getStartupYN(m_appName_folderMemo, m_runKey);
+        }
+        private void setStartup_FolderMemo(bool enable)
+        {
+            this.setStartup(m_appName_folderMemo, m_runKey, enable);
+        }
+        #endregion
+
+        #region ※ FolderMemo Update 자동실행
+        /// <summary>
+        /// 시작시 FolderMemo 자동 실행 버튼 터치 Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void setup_startup_FolderMemoAutoUpdate(object sender, EventArgs e)
+        {
+            setStartup_FolderMemoAutoUpdate(!getStartUpYN_FolderMemoAutoUpdate());
+            MenuItem item = (MenuItem)sender;
+            item.Checked = !item.Checked;
+            // 자동업데이트 키면 FolderMemoStartup 해제 (중복실행되므로)
+            if (item.Checked){
+                setStartup_FolderMemo(false);
+                var contextMenu = item.GetContextMenu();
+                var menus = contextMenu.MenuItems;
+                foreach (MenuItem tmpMenu in menus)
+                {
+                    if( tmpMenu.Tag != null && tmpMenu.Tag.Equals(m_appName_folderMemo) )
+                    {
+                        tmpMenu.Checked = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private bool getStartUpYN_FolderMemoAutoUpdate()
+        {
+            return this.getStartupYN(m_appName_folderMemoAutoUpdate, m_runKey);
+        }
+        private void setStartup_FolderMemoAutoUpdate(bool enable)
+        {
+            this.setStartup(m_appName_folderMemoAutoUpdate, m_runKey, enable);
+        }
+        #endregion
 
         private void ShowSettingForm(object sender, EventArgs e)
         {
@@ -771,16 +900,15 @@ namespace FolderMemo
             }
         }
 
+
+
         /// <summary>
         /// 시작프로그램 등록여부
         /// </summary>
         /// <returns></returns>
-        private bool getStartupYN()
+        private bool getStartupYN(string appName, string key)
         {
-            string appName = "FolderMemo";
-            string runKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
-            //Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey);
-            Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(runKey);
+            Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key);
 
             if (startupKey.GetValue(appName) == null)
                 return false;
@@ -791,12 +919,10 @@ namespace FolderMemo
             }
         }
 
-        private void setStartup(bool enable)
+        private void setStartup(string appName, string key, bool enable)
         {
-            string appName = "FolderMemo";
-            string runKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
             //Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey);
-            Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(runKey);
+            Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key);
 
             if(enable)
             {
@@ -804,7 +930,7 @@ namespace FolderMemo
                 {
                     startupKey.Close();
                     //startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey, true);
-                    startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(runKey, true);
+                    startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key, true);
                     startupKey.SetValue(appName, Application.ExecutablePath.ToString());
                     startupKey.Close();
                 }
@@ -812,47 +938,47 @@ namespace FolderMemo
             else
             {
                 //startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey, true);
-                startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(runKey, true);
+                startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key, true);
                 startupKey.DeleteValue(appName, false);
                 startupKey.Close();
             }
         }
 
-        /// <summary>
-        /// 등록일 : 20150504
-        /// 설명 : schtasks 등록 안됨...
-        ///        cmd로 등록해서 실행하더라도 FolderMemo.exe 프로세스에만 뜨고 폼이 안뜸..
-        ///        시스템트레이도안뜸...
-        /// </summary>
-        private void schtasksReg()
-        {
-            System.Diagnostics.ProcessStartInfo proInfo = new System.Diagnostics.ProcessStartInfo();
-            System.Diagnostics.Process pro = new System.Diagnostics.Process();
+        ///// <summary>
+        ///// 등록일 : 20150504
+        ///// 설명 : schtasks 등록 안됨...
+        /////        cmd로 등록해서 실행하더라도 FolderMemo.exe 프로세스에만 뜨고 폼이 안뜸..
+        /////        시스템트레이도안뜸...
+        ///// </summary>
+        //private void schtasksReg()
+        //{
+        //    System.Diagnostics.ProcessStartInfo proInfo = new System.Diagnostics.ProcessStartInfo();
+        //    System.Diagnostics.Process pro = new System.Diagnostics.Process();
 
-            proInfo.FileName = "cmd";
-            proInfo.CreateNoWindow = true;
-            proInfo.UseShellExecute = false;
-            proInfo.RedirectStandardOutput = true;
-            proInfo.RedirectStandardInput = true;
-            proInfo.RedirectStandardError = true;
-            proInfo.Verb = "runas";
+        //    proInfo.FileName = "cmd";
+        //    proInfo.CreateNoWindow = true;
+        //    proInfo.UseShellExecute = false;
+        //    proInfo.RedirectStandardOutput = true;
+        //    proInfo.RedirectStandardInput = true;
+        //    proInfo.RedirectStandardError = true;
+        //    proInfo.Verb = "runas";
 
-            pro.StartInfo = proInfo;
-            pro.Start();
+        //    pro.StartInfo = proInfo;
+        //    pro.Start();
 
-            string command = "schtasks /create /tn FolderMemoStart /tr \""+Application.ExecutablePath.ToString()+"\" /sc onlogon /ru \"system\" /rl HIGHEST /f";
-            //command = "schtasks /create /tn FolderMemoStart";
+        //    string command = "schtasks /create /tn FolderMemoStart /tr \""+Application.ExecutablePath.ToString()+"\" /sc onlogon /ru \"system\" /rl HIGHEST /f";
+        //    //command = "schtasks /create /tn FolderMemoStart";
 
-            pro.StandardInput.Write(command + System.Environment.NewLine);
-            pro.StandardInput.Close();
+        //    pro.StandardInput.Write(command + System.Environment.NewLine);
+        //    pro.StandardInput.Close();
 
-            string resultValue = pro.StandardOutput.ReadToEnd();
-            pro.WaitForExit();
-            pro.Close();
+        //    string resultValue = pro.StandardOutput.ReadToEnd();
+        //    pro.WaitForExit();
+        //    pro.Close();
 
-            //Console.WriteLine(resultValue);
-            System.Diagnostics.Debug.WriteLine(resultValue);
-        }
+        //    //Console.WriteLine(resultValue);
+        //    System.Diagnostics.Debug.WriteLine(resultValue);
+        //}
 
         protected override void Dispose(bool disposing)
         {

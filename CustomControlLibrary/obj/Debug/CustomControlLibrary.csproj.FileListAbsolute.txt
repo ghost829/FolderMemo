@@ -20,8 +20,8 @@ C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\CustomControlLibra
 C:\Users\SSW\Documents\Visual Studio 2012\Projects\FolderMemo\CustomControlLibrary\obj\Debug\CCL.pdb
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\bin\Debug\CCL.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\bin\Debug\CCL.pdb
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CustomControlLibrary.csprojResolveAssemblyReference.cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CustomControlLibrary.CustomForm.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\ProgressLabel.resources
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CustomControlLibrary.csproj.GenerateResource.Cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CCL.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CCL.pdb

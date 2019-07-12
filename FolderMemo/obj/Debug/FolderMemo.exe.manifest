@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CCL.dll" size="36352">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CCL.dll" size="38912">
       <assemblyIdentity name="CCL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>SsUFUN7H7bKk/EVl9c/DtDR5VCA=</dsig:DigestValue>
+        <dsig:DigestValue>THH5cCwJ46jpvGiid/6ewab03hI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="474112">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="516096">
       <assemblyIdentity name="FolderMemo" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gjXMR3MOpdcuTJvIf5j3lcLnOmY=</dsig:DigestValue>
+        <dsig:DigestValue>aOvjnL5XQ4RV0txNET2jBp5KOg0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>FvuSb4h5suGG2d4BuXcIZgj0ffI=</dsig:DigestValue>
+        <dsig:DigestValue>vbuoJC2AUhrwiIgnZGCXQ3853HA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -114,13 +114,13 @@
       <dsig:DigestValue>HWU3ccPLkOJGP0st4+eZAOrLn3o=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="xml\config.xml" size="169" writeableType="applicationData">
+  <file name="xml\config.xml" size="164" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>gZxcDPcxd0iLuFFINDwgY6Us2LM=</dsig:DigestValue>
+      <dsig:DigestValue>oxG2uRmkRwoh9Lzxoj+pOhf1loM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="xml\data.xml" size="584" writeableType="applicationData">

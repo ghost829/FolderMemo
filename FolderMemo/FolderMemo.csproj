@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="DEFINE.cs" />
     <Compile Include="DESCryptography.cs" />
+    <Compile Include="FolderMemoAboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderMemoAboutBox.Designer.cs">
+      <DependentUpon>FolderMemoAboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Folder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     <EmbeddedResource Include="CustomTooltip.resx">
       <DependentUpon>CustomTooltip.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FolderMemoAboutBox.resx">
+      <DependentUpon>FolderMemoAboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Folder.resx">
       <DependentUpon>Form_Folder.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,7 +163,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\app.manifest" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -226,6 +237,10 @@
     <None Include="Resources\stick-note.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\search_1.png" />
+    <None Include="Resources\search_2.png" />
+    <None Include="Resources\folder_up.png" />
+    <None Include="Resources\folder_up_disable.png" />
     <Content Include="temp.txt" />
     <Content Include="xml\config.xml" />
     <Content Include="xml\data.xml">

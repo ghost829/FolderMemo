@@ -46,9 +46,9 @@
             this.ctxt_lstView_makeGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxt_lstView_makeMemo = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxt_lstView_paste = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_upperPath = new System.Windows.Forms.Button();
             this.txt_search = new System.Windows.Forms.TextBox();
             this.lbl_time = new System.Windows.Forms.Label();
+            this.btn_upperPath = new System.Windows.Forms.Button();
             this.ctxt_form.SuspendLayout();
             this.ctxt_listViewItem.SuspendLayout();
             this.ctxt_listView.SuspendLayout();
@@ -101,13 +101,13 @@
             // 
             // btn_search
             // 
-            this.btn_search.BackgroundImage = global::FolderMemo.Properties.Resources.ssw_search;
+            this.btn_search.BackgroundImage = global::FolderMemo.Properties.Resources.search_2;
             this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_search.FlatAppearance.BorderSize = 0;
             this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.Location = new System.Drawing.Point(201, 38);
+            this.btn_search.Location = new System.Drawing.Point(196, 38);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(32, 32);
+            this.btn_search.Size = new System.Drawing.Size(32, 31);
             this.btn_search.TabIndex = 1;
             this.btn_search.UseVisualStyleBackColor = true;
             this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
@@ -118,20 +118,20 @@
             this.ctxt_form_topmost,
             this.ctxt_form_exit});
             this.ctxt_form.Name = "ctxt_form";
-            this.ctxt_form.Size = new System.Drawing.Size(120, 48);
+            this.ctxt_form.Size = new System.Drawing.Size(153, 70);
             // 
             // ctxt_form_topmost
             // 
             this.ctxt_form_topmost.Name = "ctxt_form_topmost";
-            this.ctxt_form_topmost.Size = new System.Drawing.Size(119, 22);
-            this.ctxt_form_topmost.Text = "topmost";
+            this.ctxt_form_topmost.Size = new System.Drawing.Size(152, 22);
+            this.ctxt_form_topmost.Text = "&TopMost";
             this.ctxt_form_topmost.Click += new System.EventHandler(this.ctxt_form_topmost_Click);
             // 
             // ctxt_form_exit
             // 
             this.ctxt_form_exit.Name = "ctxt_form_exit";
-            this.ctxt_form_exit.Size = new System.Drawing.Size(119, 22);
-            this.ctxt_form_exit.Text = "exit";
+            this.ctxt_form_exit.Size = new System.Drawing.Size(152, 22);
+            this.ctxt_form_exit.Text = "E&xit";
             this.ctxt_form_exit.Click += new System.EventHandler(this.ctxt_form_exit_Click);
             // 
             // ctxt_listViewItem
@@ -203,32 +203,36 @@
             this.ctxt_lstView_paste.Text = "붙여넣기 (&P)";
             this.ctxt_lstView_paste.Click += new System.EventHandler(this.ctxt_lstView_paste_Click);
             // 
-            // btn_upperPath
-            // 
-            this.btn_upperPath.Image = global::FolderMemo.Properties.Resources.upperArrow_enable;
-            this.btn_upperPath.Location = new System.Drawing.Point(236, 7);
-            this.btn_upperPath.Name = "btn_upperPath";
-            this.btn_upperPath.Size = new System.Drawing.Size(28, 28);
-            this.btn_upperPath.TabIndex = 4;
-            this.btn_upperPath.UseVisualStyleBackColor = true;
-            this.btn_upperPath.Click += new System.EventHandler(this.btn_upperPath_Click);
-            // 
             // txt_search
             // 
             this.txt_search.Location = new System.Drawing.Point(12, 44);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(183, 21);
+            this.txt_search.Size = new System.Drawing.Size(178, 21);
             this.txt_search.TabIndex = 0;
             this.txt_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_search_KeyDown);
             // 
             // lbl_time
             // 
             this.lbl_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_time.Font = new System.Drawing.Font("Gulim", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_time.Location = new System.Drawing.Point(239, 42);
             this.lbl_time.Name = "lbl_time";
             this.lbl_time.Size = new System.Drawing.Size(169, 23);
             this.lbl_time.TabIndex = 5;
             this.lbl_time.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // btn_upperPath
+            // 
+            this.btn_upperPath.BackgroundImage = global::FolderMemo.Properties.Resources.folder_up;
+            this.btn_upperPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_upperPath.FlatAppearance.BorderSize = 0;
+            this.btn_upperPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_upperPath.Location = new System.Drawing.Point(235, 6);
+            this.btn_upperPath.Name = "btn_upperPath";
+            this.btn_upperPath.Size = new System.Drawing.Size(32, 31);
+            this.btn_upperPath.TabIndex = 6;
+            this.btn_upperPath.UseVisualStyleBackColor = true;
+            this.btn_upperPath.Click += new System.EventHandler(this.btn_upperPath_Click);
             // 
             // Form_Folder
             // 
@@ -237,9 +241,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
             this.ClientSize = new System.Drawing.Size(420, 340);
+            this.Controls.Add(this.btn_upperPath);
             this.Controls.Add(this.lbl_time);
             this.Controls.Add(this.txt_search);
-            this.Controls.Add(this.btn_upperPath);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.txt_path);
@@ -286,10 +290,10 @@
         private System.Windows.Forms.ToolStripMenuItem ctxt_lstView_makeGroup;
         private System.Windows.Forms.ToolStripMenuItem ctxt_lstView_makeMemo;
         private System.Windows.Forms.ToolStripMenuItem ctxt_lstItem_delete;
-        private System.Windows.Forms.Button btn_upperPath;
         private System.Windows.Forms.TextBox txt_search;
         private System.Windows.Forms.ToolStripMenuItem ctxt_lstItem_copy;
         private System.Windows.Forms.ToolStripMenuItem ctxt_lstView_paste;
         private System.Windows.Forms.Label lbl_time;
+        private System.Windows.Forms.Button btn_upperPath;
     }
 }

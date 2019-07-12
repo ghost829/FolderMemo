@@ -21,8 +21,9 @@ C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\CustomControlLibrary\obj
 C:\Users\banaple_70\Downloads\Project_FolderMemo_150609\CustomControlLibrary\obj\Release\CCL.pdb
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\bin\Release\CCL.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\bin\Release\CCL.pdb
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Release\CustomControlLibrary.csprojResolveAssemblyReference.cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Release\CustomControlLibrary.CustomForm.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Release\ProgressLabel.resources
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Release\CustomControlLibrary.csproj.GenerateResource.Cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Release\CCL.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Release\CCL.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Release\CustomControlLibrary.csprojResolveAssemblyReference.cache

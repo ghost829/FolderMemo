@@ -1,0 +1,10 @@
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Release\FolderMemoUpdate.exe.config
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Release\FolderMemoUpdate.exe
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Release\FolderMemoUpdate.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Release\FolderMemoUpdate.Form1.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Release\FolderMemoUpdate.Properties.Resources.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Release\FolderMemoUpdate.csproj.GenerateResource.Cache
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Release\FolderMemoUpdate.exe
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Release\FolderMemoUpdate.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Release\FolderMemoUpdate.ProgressLabel.resources
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Release\FolderMemoUpdate.csprojResolveAssemblyReference.cache

@@ -60,11 +60,20 @@
     <Compile Include="ProfessionalMenuStrip.Designer.cs">
       <DependentUpon>ProfessionalMenuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgressLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProgressLabel.Designer.cs">
+      <DependentUpon>ProgressLabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CustomForm.resx">
       <DependentUpon>CustomForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressLabel.resx">
+      <DependentUpon>ProgressLabel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
