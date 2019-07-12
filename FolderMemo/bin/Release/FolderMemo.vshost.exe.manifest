@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2ysI/GJTpsIn2So7Xhh8AOkQHg8=</dsig:DigestValue>
+        <dsig:DigestValue>t2dnq/pNu/xyatn81ehZPHsZkZY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="508928">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="513536">
       <assemblyIdentity name="FolderMemo" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>7Ak0323u6Qyofa83z542B+1KsK4=</dsig:DigestValue>
+        <dsig:DigestValue>slbycNCiPPgddeMZ7vnEZSyL4bc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>7A28Qs4A9/M6tp/chHvkflXFSmU=</dsig:DigestValue>
+        <dsig:DigestValue>2XgV6fNVWRcyqIR5ot21+GOjUaY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

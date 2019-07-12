@@ -1,8 +1,6 @@
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Debug\FolderMemoUpdate.exe.config
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Debug\FolderMemoUpdate.exe
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Debug\FolderMemoUpdate.pdb
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Debug\CCL.dll
-C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\bin\Debug\CCL.pdb
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Debug\FolderMemoUpdate.csprojResolveAssemblyReference.cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Debug\FolderMemoUpdate.Form1.resources
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemoUpdate\obj\Debug\FolderMemoUpdate.ProgressLabel.resources

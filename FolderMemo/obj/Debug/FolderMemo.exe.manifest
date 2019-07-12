@@ -4,7 +4,7 @@
   <description asmv2:iconFile="stick-note_32x.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="FolderMemo" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="FolderMemo" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="FolderMemo.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>THH5cCwJ46jpvGiid/6ewab03hI=</dsig:DigestValue>
+        <dsig:DigestValue>hfa5euH8WLQgf+xdifP4dbrlmNU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="516096">
-      <assemblyIdentity name="FolderMemo" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="520704">
+      <assemblyIdentity name="FolderMemo" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>aOvjnL5XQ4RV0txNET2jBp5KOg0=</dsig:DigestValue>
+        <dsig:DigestValue>G+2pF3IFyI1DiJifJ8XYJGdkf+w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>vbuoJC2AUhrwiIgnZGCXQ3853HA=</dsig:DigestValue>
+        <dsig:DigestValue>WARYW2gWe0pUZUWZP9iRHbkV86A=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

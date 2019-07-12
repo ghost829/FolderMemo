@@ -45,3 +45,4 @@ C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLi
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csproj.GenerateResource.Cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\paintTextBox\PaintTextBoxClassLib\obj\Debug\PaintTextBoxClassLib.csprojResolveAssemblyReference.cache

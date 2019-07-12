@@ -40,3 +40,6 @@ C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Debug\FolderMemo.
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Debug\FolderMemo.application
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Debug\FolderMemo.exe
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Debug\FolderMemo.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Debug\Interop.Shell32.dll
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\FolderMemo\obj\Debug\FolderMemo.csproj.ResolveComReference.cache

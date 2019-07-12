@@ -257,17 +257,30 @@ namespace FolderMemoUpdate
                 //{
                 //    processList = Process.GetProcessesByName(target_name);
                 //}
-                if (processList.Length > 0)
+                if( processList.Length > 0)
                 {
                     label1_setText("프로세스 찾음 => 제거");
-                    // Kill을 수행하면 시스템 트레이에 아이콘이 남음, CloseMainWindow 수행!
-                    if ( !processList[0].CloseMainWindow() )
+                }
+                while (processList.Length > 0)
+                {
+                    if (!processList[0].CloseMainWindow())
                     {
                         // 안닫히면 강제종료
-                        processList[0].Kill(); 
+                        processList[0].Kill();
                     }
-
+                    processList = Process.GetProcessesByName(target_name);
+                    
                 }
+                //if (processList.Length > 0)
+                //{
+                //    label1_setText("프로세스 찾음 => 제거");
+                //    // Kill을 수행하면 시스템 트레이에 아이콘이 남음, CloseMainWindow 수행!
+                //    if ( !processList[0].CloseMainWindow() )
+                //    {
+                //        // 안닫히면 강제종료
+                //        processList[0].Kill(); 
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -481,7 +494,11 @@ namespace FolderMemoUpdate
         {
             // 0.1초후 폴더메모 실행
             Thread.Sleep(100);
-            Process.Start("FolderMemo.exe");
+            ProcessStartInfo info = new ProcessStartInfo("FolderMemo.exe");
+            info.CreateNoWindow = true;
+            info.UseShellExecute = false;
+            //Process.Start("FolderMemo.exe");
+            Process.Start(info);
             this.close_form();
             //this.TopRight_CloseBtnVisible = true;
         }

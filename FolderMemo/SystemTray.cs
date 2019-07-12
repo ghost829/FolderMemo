@@ -5,14 +5,16 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Xml;
+using System.IO; // DirectoryInfo, FileInfo
+using IWshRuntimeLibrary;
 
 namespace FolderMemo
 {
     class SystemTray : Form
     {
-        private const string m_appName_folderMemo = "FolderMemo";
-        private const string m_appName_folderMemoAutoUpdate = "FolderMemoUpdate";
-        private const string m_runKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+        private const string m_appName_folderMemo = "FolderMemo.exe";
+        private const string m_appName_folderMemoAutoUpdate = "FolderMemoUpdate.exe";
+        //private const string m_runKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
 
         private NotifyIcon trayIcon;
         private ContextMenu trayMenu; //트레이 우클릭 메뉴
@@ -820,7 +822,7 @@ namespace FolderMemo
             // FolderMemoStartup 키면 자동업데이트 해제 (중복실행되므로)
             if (item.Checked)
             {
-                setStartup_FolderMemo(false);
+                setStartup_FolderMemoAutoUpdate(false);
                 var contextMenu = item.GetContextMenu();
                 var menus = contextMenu.MenuItems;
                 foreach (MenuItem tmpMenu in menus)
@@ -836,11 +838,11 @@ namespace FolderMemo
 
         private bool getStartUpYN_FolderMemo()
         {
-            return this.getStartupYN(m_appName_folderMemo, m_runKey);
+            return this.getStartupYN(m_appName_folderMemo);
         }
         private void setStartup_FolderMemo(bool enable)
         {
-            this.setStartup(m_appName_folderMemo, m_runKey, enable);
+            this.setStartup(m_appName_folderMemo, enable);
         }
         #endregion
 
@@ -873,11 +875,11 @@ namespace FolderMemo
 
         private bool getStartUpYN_FolderMemoAutoUpdate()
         {
-            return this.getStartupYN(m_appName_folderMemoAutoUpdate, m_runKey);
+            return this.getStartupYN(m_appName_folderMemoAutoUpdate);
         }
         private void setStartup_FolderMemoAutoUpdate(bool enable)
         {
-            this.setStartup(m_appName_folderMemoAutoUpdate, m_runKey, enable);
+            this.setStartup(m_appName_folderMemoAutoUpdate, enable);
         }
         #endregion
 
@@ -906,45 +908,143 @@ namespace FolderMemo
         /// 시작프로그램 등록여부
         /// </summary>
         /// <returns></returns>
-        private bool getStartupYN(string appName, string key)
+        private bool getStartupYN(string appName)
         {
-            Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key);
-
-            if (startupKey.GetValue(appName) == null)
-                return false;
-            else
-            {
-                startupKey.Close();
-                return true;
-            }
+            return getShortCut(appName) != null;
         }
 
-        private void setStartup(string appName, string key, bool enable)
+        /// <summary>
+        /// 해당 appName에 맞는 바로가기 link인지 여부 확인
+        /// </summary>
+        /// <param name="appName"></param>
+        /// <returns></returns>
+        private FileInfo getShortCut(string appName)
         {
-            //Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey);
-            Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key);
+            DirectoryInfo startup_dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.Startup));
 
-            if(enable)
-            {
-                // 레지스트리에 appName값이 없을경우에만 추가
-                if (startupKey.GetValue(appName) == null)
+            Shell32.Shell shell = new Shell32.Shell();
+            Shell32.Folder shortcut_folder = shell.NameSpace(startup_dir.FullName);
+            foreach (FileInfo file in startup_dir.GetFiles())
+            {   
+                Shell32.FolderItem folder_item = shortcut_folder.Items().Item(file.Name);
+                if (folder_item == null)
                 {
-                    startupKey.Close();
-                    //startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey, true);
-                    startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key, true);
-                    string str_path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString()), appName + ".exe");
-                    startupKey.SetValue(appName, str_path);
-                    startupKey.Close();
+                    Console.WriteLine("Cannot find shortcut file '" + file.Name + "'");
+                }
+                else if (!folder_item.IsLink)
+                {
+                    Console.WriteLine("File '" + file.Name + "' isn't a shortcut.");
+                }
+                else
+                {
+                    try
+                    {
+                        Shell32.ShellLinkObject lnk =
+                            (Shell32.ShellLinkObject)folder_item.GetLink;
+                        string original_path = lnk.Path;
+                        if (original_path.Length > 0)
+                        {
+                            FileInfo original_file = new FileInfo(original_path);
+                            if (original_file.Name == appName) // 해당 파일이 맞는지 확인
+                            {
+                                return file;
+                            }
+                        }
+                    }catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                }
+            }
+            return null;
+        }
+
+        ///// <summary>
+        ///// 시작프로그램 등록여부
+        ///// </summary>
+        ///// <returns></returns>
+        //private bool getStartupYN(string appName, string key)
+        //{
+        //    Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key);
+
+        //    if (startupKey.GetValue(appName) == null)
+        //        return false;
+        //    else
+        //    {
+        //        startupKey.Close();
+        //        return true;
+        //    }
+        //}
+
+        /// <summary>
+        /// startup 디렉토리 밑에 shortcut 추가하기(제대로 동작됨을 확인)
+        /// </summary>
+        /// <param name="appName"></param>
+        /// <param name="enable"></param>
+        private void setStartup(string appName, bool enable)
+        {
+            if (enable)
+            {
+                // 시작프로그램에 link가 없을경우에만 추가
+                if (!this.getStartupYN(appName))
+                {
+                    string fileName = Path.GetFileName(appName);
+                    string ext = Path.GetExtension(appName);
+                    fileName = fileName.Substring(0, fileName.Length - ext.Length);
+                    
+                    string shortcutAddress = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\" + fileName + ".lnk";
+                    string targetPath = Path.GetDirectoryName(Application.ExecutablePath.ToString());
+                    string targetFullPath = Path.GetDirectoryName(Application.ExecutablePath.ToString()) + @"\" + appName;
+                    
+                    WshShell wsh = new WshShell();
+                    IWshRuntimeLibrary.IWshShortcut shortcut = wsh.CreateShortcut(shortcutAddress) as IWshRuntimeLibrary.IWshShortcut;
+                    shortcut.Arguments = "";
+                    shortcut.TargetPath = targetFullPath;
+                    // not sure about what this is for
+                    shortcut.WindowStyle = 1;
+                    shortcut.Description = "my shortcut description";
+                    shortcut.WorkingDirectory = targetPath;
+                    shortcut.IconLocation = targetFullPath;
+                    shortcut.Save();
                 }
             }
             else
             {
-                //startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey, true);
-                startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key, true);
-                startupKey.DeleteValue(appName, false);
-                startupKey.Close();
+                FileInfo info = this.getShortCut(appName);
+                if (info != null) {
+                    info.Delete();
+                }
             }
         }
+
+        // 레지스트리에 등록하는 방식 - startup시 단일 App만 실행됨
+        // startup시 Update프로그램 실행 이후 Process.Start()로 앱 실행하면 제대로 동작 안함
+        //private void setStartup(string appName, string key, bool enable)
+        //{
+        //    //Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey);
+        //    Microsoft.Win32.RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key);
+
+        //    if (enable)
+        //    {
+        //        // 레지스트리에 appName값이 없을경우에만 추가
+        //        if (startupKey.GetValue(appName) == null)
+        //        {
+        //            startupKey.Close();
+        //            //startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey, true);
+        //            startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key, true);
+        //            string str_path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString()), appName + ".exe");
+        //            startupKey.SetValue(appName, str_path);
+        //            startupKey.Close();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey, true);
+        //        startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key, true);
+        //        startupKey.DeleteValue(appName, false);
+        //        startupKey.Close();
+        //    }
+        //}
 
         ///// <summary>
         ///// 등록일 : 20150504
