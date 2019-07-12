@@ -926,12 +926,14 @@ namespace FolderMemo
 
             if(enable)
             {
+                // 레지스트리에 appName값이 없을경우에만 추가
                 if (startupKey.GetValue(appName) == null)
                 {
                     startupKey.Close();
                     //startupKey = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(runKey, true);
                     startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(key, true);
-                    startupKey.SetValue(appName, Application.ExecutablePath.ToString());
+                    string str_path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString()), appName + ".exe");
+                    startupKey.SetValue(appName, str_path);
                     startupKey.Close();
                 }
             }
