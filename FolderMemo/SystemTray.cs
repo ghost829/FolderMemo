@@ -112,7 +112,7 @@ namespace FolderMemo
                 settingNode = configDoc.SelectSingleNode("//SETTING");
                 List<String[]> tmpList = new List<string[]>();
                 string[] tmpStrArr1 = { DEFINE.CONFIG_SETTING_TOPMOST, "FALSE" }; // TOPMOST
-                string[] tmpStrArr2 = { DEFINE.CONFIG_SETTING_CLOSERECT, "" };      // Folder Form's Rectangle
+                string[] tmpStrArr2 = { DEFINE.CONFIG_SETTING_CLOSERECT, "DEFAULT" };      // Folder Form's Rectangle
                 string[] tmpStrArr3 = { DEFINE.CONFIG_SETTING_MEMODATAPATH, m_default_memo_path }; // 메모데이터 기본위치값
 
                 tmpList.Add(tmpStrArr1);
@@ -236,7 +236,7 @@ namespace FolderMemo
                 // mainFolder 크기 지정(기존에 저장된 위치값 있는지)
                 #region
                 String str_mainFolder_rect = configDoc.SelectSingleNode("//SETTING/" + DEFINE.CONFIG_SETTING_CLOSERECT).InnerText;
-                if (!String.IsNullOrEmpty(str_mainFolder_rect))
+                if (!String.IsNullOrEmpty(str_mainFolder_rect) && str_mainFolder_rect != "DEFAULT")
                 {
                     RectangleConverter rc = new RectangleConverter();
                     Rectangle tmpRect = (Rectangle)rc.ConvertFromString(str_mainFolder_rect);
