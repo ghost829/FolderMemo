@@ -80,7 +80,15 @@ namespace FolderMemo
             timer_show_dt = new Timer();
             timer_show_dt.Tick += new EventHandler(delegate
             {
-                lbl_time.Text = DateTime.Now.ToLongDateString() + System.Environment.NewLine+ DateTime.Now.ToLongTimeString();
+                DateTime now = DateTime.Now;
+                var str_dt = now.ToString("yyyy년 MM월 dd일");
+                str_dt += now.ToString(" dddd");
+                str_dt += System.Environment.NewLine;
+                str_dt += now.Hour < 13 ? "오전" : "오후";
+                str_dt += now.ToString(" hh:mm:ss");
+
+                lbl_time.Text = str_dt;
+                //lbl_time.Text = DateTime.Now.ToLongDateString() + System.Environment.NewLine + DateTime.Now.ToLongTimeString();
             });
             timer_show_dt.Interval = 100;
             timer_show_dt.Start();

@@ -257,7 +257,8 @@ namespace FolderMemo
                 Console.WriteLine(richTextBox1.SelectionStart + " "+ richTextBox1.SelectionLength);
                 if (richTextBox1.SelectedText.Length > 0)
                 {
-                    Clipboard.SetText(richTextBox1.SelectedText);
+                    string textforClipboard = richTextBox1.SelectedText.Replace("\n", Environment.NewLine);
+                    Clipboard.SetText(textforClipboard);
                 }
                 else
                 {

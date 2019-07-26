@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>t2dnq/pNu/xyatn81ehZPHsZkZY=</dsig:DigestValue>
+        <dsig:DigestValue>u/XMfKo3DhICdT3V6WIo0m8BYqI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="513536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderMemo.exe" size="514048">
       <assemblyIdentity name="FolderMemo" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>slbycNCiPPgddeMZ7vnEZSyL4bc=</dsig:DigestValue>
+        <dsig:DigestValue>Ugv2KaRTIERA+N9dDCF0Gd9AcO8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2XgV6fNVWRcyqIR5ot21+GOjUaY=</dsig:DigestValue>
+        <dsig:DigestValue>rr1VUi/R61DmQsdV/+DNKhZABIc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -114,13 +114,13 @@
       <dsig:DigestValue>HWU3ccPLkOJGP0st4+eZAOrLn3o=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="xml\config.xml" size="164" writeableType="applicationData">
+  <file name="xml\config.xml" size="157" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>oxG2uRmkRwoh9Lzxoj+pOhf1loM=</dsig:DigestValue>
+      <dsig:DigestValue>gKMVy0jJBshjsIwzE9nXyCH+Mvs=</dsig:DigestValue>
     </hash>
   </file>
   <file name="xml\data.xml" size="584" writeableType="applicationData">

@@ -72,9 +72,9 @@
             this.listView1.HideSelection = false;
             this.listView1.LabelEdit = true;
             this.listView1.LargeImageList = this.imageList1;
-            this.listView1.Location = new System.Drawing.Point(10, 72);
+            this.listView1.Location = new System.Drawing.Point(10, 79);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(398, 256);
+            this.listView1.Size = new System.Drawing.Size(398, 249);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -105,7 +105,7 @@
             this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_search.FlatAppearance.BorderSize = 0;
             this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.Location = new System.Drawing.Point(196, 38);
+            this.btn_search.Location = new System.Drawing.Point(196, 42);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(32, 31);
             this.btn_search.TabIndex = 1;
@@ -118,19 +118,19 @@
             this.ctxt_form_topmost,
             this.ctxt_form_exit});
             this.ctxt_form.Name = "ctxt_form";
-            this.ctxt_form.Size = new System.Drawing.Size(153, 70);
+            this.ctxt_form.Size = new System.Drawing.Size(122, 48);
             // 
             // ctxt_form_topmost
             // 
             this.ctxt_form_topmost.Name = "ctxt_form_topmost";
-            this.ctxt_form_topmost.Size = new System.Drawing.Size(152, 22);
+            this.ctxt_form_topmost.Size = new System.Drawing.Size(121, 22);
             this.ctxt_form_topmost.Text = "&TopMost";
             this.ctxt_form_topmost.Click += new System.EventHandler(this.ctxt_form_topmost_Click);
             // 
             // ctxt_form_exit
             // 
             this.ctxt_form_exit.Name = "ctxt_form_exit";
-            this.ctxt_form_exit.Size = new System.Drawing.Size(152, 22);
+            this.ctxt_form_exit.Size = new System.Drawing.Size(121, 22);
             this.ctxt_form_exit.Text = "E&xit";
             this.ctxt_form_exit.Click += new System.EventHandler(this.ctxt_form_exit_Click);
             // 
@@ -205,20 +205,23 @@
             // 
             // txt_search
             // 
+            this.txt_search.Font = new System.Drawing.Font("Gulim", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txt_search.Location = new System.Drawing.Point(12, 44);
             this.txt_search.Name = "txt_search";
-            this.txt_search.Size = new System.Drawing.Size(178, 21);
+            this.txt_search.Size = new System.Drawing.Size(178, 26);
             this.txt_search.TabIndex = 0;
             this.txt_search.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_search_KeyDown);
             // 
             // lbl_time
             // 
-            this.lbl_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_time.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_time.Font = new System.Drawing.Font("Gulim", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_time.Location = new System.Drawing.Point(239, 42);
+            this.lbl_time.Location = new System.Drawing.Point(235, 46);
             this.lbl_time.Name = "lbl_time";
-            this.lbl_time.Size = new System.Drawing.Size(169, 23);
+            this.lbl_time.Size = new System.Drawing.Size(173, 32);
             this.lbl_time.TabIndex = 5;
+            this.lbl_time.Text = "           ";
             this.lbl_time.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btn_upperPath
@@ -241,8 +244,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
             this.ClientSize = new System.Drawing.Size(420, 340);
-            this.Controls.Add(this.btn_upperPath);
             this.Controls.Add(this.lbl_time);
+            this.Controls.Add(this.btn_upperPath);
             this.Controls.Add(this.txt_search);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.listView1);
