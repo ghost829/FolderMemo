@@ -429,7 +429,7 @@ namespace FolderMemo
             var text = txt_search.Text;
             if (text.Length > 0)
             {
-                var find_idx = richTextBox1.Find(text, richTextBox1.SelectionStart + richTextBox1.SelectionLength, RichTextBoxFinds.MatchCase);
+                var find_idx = richTextBox1.Find(text, richTextBox1.SelectionStart + richTextBox1.SelectionLength, RichTextBoxFinds.None);
 
                 if (find_idx > -1)
                 {
@@ -454,7 +454,7 @@ namespace FolderMemo
                 int last_find_idx = 0;
                 while (last_find_idx > -1 && last_find_idx < last_length)
                 {
-                    last_find_idx = richTextBox1.Find(text, last_find_idx, last_length, RichTextBoxFinds.MatchCase);
+                    last_find_idx = richTextBox1.Find(text, last_find_idx, last_length, RichTextBoxFinds.None);
                     if (last_find_idx != -1)
                     {
                         find_idxs.Add(last_find_idx);

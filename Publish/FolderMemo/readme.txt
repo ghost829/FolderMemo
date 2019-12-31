@@ -1,6 +1,9 @@
 ﻿https://github.com/ghost829/FolderMemo
 
 [버전 개정 이력]
+v1.0.0.2
+ - 메모창에서 검색기능 수행 시 대소문자구분없이 검색하게 수정
+
 v1.0.0.1
  - 자동업데이트 프로그램 개발
  - System Tray 메뉴 구성 변경

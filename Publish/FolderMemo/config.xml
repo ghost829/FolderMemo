@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SETTING>
   <TopMost>FALSE</TopMost>
-  <Rect>DEFAULT</Rect>
+  <Rect>2137, 3, 420, 340</Rect>
   <MemoDataPath>data.xml</MemoDataPath>
 </SETTING>

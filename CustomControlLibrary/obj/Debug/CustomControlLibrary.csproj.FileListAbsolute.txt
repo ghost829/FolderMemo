@@ -25,3 +25,4 @@ C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\P
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CustomControlLibrary.csproj.GenerateResource.Cache
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CCL.dll
 C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CCL.pdb
+C:\Users\banaple_70\Documents\GitHub\FolderMemo\CustomControlLibrary\obj\Debug\CustomControlLibrary.csprojResolveAssemblyReference.cache
