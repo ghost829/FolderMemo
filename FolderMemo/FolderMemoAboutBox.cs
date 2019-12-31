@@ -5,12 +5,16 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
+using System.Text;
 
 namespace FolderMemo
 {
     partial class FolderMemoAboutBox : Form
     {
         private const string m_str_detail_url = "https://github.com/ghost829/FolderMemo";
+        private const string m_str_readme_url = "https://raw.githubusercontent.com/ghost829/FolderMemo/master/Publish/FolderMemo/readme.txt";
         public FolderMemoAboutBox()
         {
             InitializeComponent();
@@ -19,7 +23,7 @@ namespace FolderMemo
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             //this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            //this.textBoxDescription.Text = AssemblyDescription;
         }
 
         #region Assembly Attribute Accessors
@@ -110,6 +114,29 @@ namespace FolderMemo
         private void okButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FolderMemoAboutBox_Load(object sender, EventArgs e)
+        {
+            var webRequest = HttpWebRequest.Create(m_str_readme_url);
+            webRequest.Method = "GET";
+            using (HttpWebResponse resp = (HttpWebResponse)webRequest.GetResponse())
+            {
+                Console.WriteLine(resp.StatusCode);
+                Stream respStream = resp.GetResponseStream();
+                using (StreamReader sr = new StreamReader(respStream))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        System.Console.WriteLine(line);
+                        //sb.Append(line);
+                        sb.AppendLine(line);
+                    }
+                    this.textBoxDescription.Text = sb.ToString(); // sr.ReadToEnd();
+                }
+            }
         }
     }
 }
