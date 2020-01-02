@@ -339,6 +339,19 @@
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(TargetDir)\config.xml" (
+  copy /Y "$(SolutionDir)\Publish\FolderMemo\config.xml" "$(TargetDir)\config.xml"
+)
+
+if not exist "$(TargetDir)\data.xml" (
+  copy /Y "$(SolutionDir)\Publish\FolderMemo\data.xml" "$(TargetDir)\data.xml"
+)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
