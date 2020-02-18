@@ -39,10 +39,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.searchFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.ctxt_listview1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_search_data = new System.Windows.Forms.Button();
+            this.btn_new_memo = new System.Windows.Forms.Button();
+            this.addNewMemoDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -52,12 +54,11 @@
             // 
             // txt_memoDataPath
             // 
-            this.txt_memoDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txt_memoDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_memoDataPath.Location = new System.Drawing.Point(12, 44);
+            this.txt_memoDataPath.Location = new System.Drawing.Point(131, 218);
             this.txt_memoDataPath.Name = "txt_memoDataPath";
-            this.txt_memoDataPath.Size = new System.Drawing.Size(260, 21);
+            this.txt_memoDataPath.Size = new System.Drawing.Size(281, 21);
             this.txt_memoDataPath.TabIndex = 0;
             // 
             // btn_apply
@@ -65,7 +66,7 @@
             this.btn_apply.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_apply.Location = new System.Drawing.Point(0, 0);
             this.btn_apply.Name = "btn_apply";
-            this.btn_apply.Size = new System.Drawing.Size(128, 30);
+            this.btn_apply.Size = new System.Drawing.Size(196, 30);
             this.btn_apply.TabIndex = 1;
             this.btn_apply.Text = "적용";
             this.btn_apply.UseVisualStyleBackColor = true;
@@ -76,9 +77,9 @@
             this.btn_cancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_cancel.Location = new System.Drawing.Point(0, 0);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(128, 30);
+            this.btn_cancel.Size = new System.Drawing.Size(200, 30);
             this.btn_cancel.TabIndex = 2;
-            this.btn_cancel.Text = "취소";
+            this.btn_cancel.Text = "닫기";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
@@ -93,12 +94,13 @@
             this.columnHeader3});
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(12, 109);
+            this.listView1.Location = new System.Drawing.Point(12, 45);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(260, 104);
+            this.listView1.Size = new System.Drawing.Size(400, 155);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
@@ -121,7 +123,7 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(12, 219);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 249);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -131,14 +133,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btn_cancel);
-            this.splitContainer1.Size = new System.Drawing.Size(260, 30);
-            this.splitContainer1.SplitterDistance = 128;
+            this.splitContainer1.Size = new System.Drawing.Size(400, 30);
+            this.splitContainer1.SplitterDistance = 196;
             this.splitContainer1.TabIndex = 4;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(12, 221);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 12);
             this.label1.TabIndex = 5;
@@ -147,19 +150,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 88);
+            this.label2.Location = new System.Drawing.Point(12, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 12);
             this.label2.TabIndex = 6;
             this.label2.Text = "◇ 최근 경로";
             // 
-            // openFileDialog1
+            // searchFileDialog
             // 
-            this.openFileDialog1.DefaultExt = "xml";
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Data파일(*.xml)|*.xml";
-            this.openFileDialog1.Title = "데이터 파일 열기";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.searchFileDialog.DefaultExt = "xml";
+            this.searchFileDialog.Filter = "Data파일(*.xml)|*.xml";
+            this.searchFileDialog.Title = "데이터 파일 열기";
+            this.searchFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // ctxt_listview1
             // 
@@ -177,7 +179,7 @@
             // 
             // btn_search_data
             // 
-            this.btn_search_data.Location = new System.Drawing.Point(131, 16);
+            this.btn_search_data.Location = new System.Drawing.Point(122, 20);
             this.btn_search_data.Name = "btn_search_data";
             this.btn_search_data.Size = new System.Drawing.Size(141, 20);
             this.btn_search_data.TabIndex = 7;
@@ -185,18 +187,36 @@
             this.btn_search_data.UseVisualStyleBackColor = true;
             this.btn_search_data.Click += new System.EventHandler(this.btn_search_data_Click);
             // 
+            // btn_new_memo
+            // 
+            this.btn_new_memo.Location = new System.Drawing.Point(278, 20);
+            this.btn_new_memo.Name = "btn_new_memo";
+            this.btn_new_memo.Size = new System.Drawing.Size(134, 20);
+            this.btn_new_memo.TabIndex = 7;
+            this.btn_new_memo.Text = "새로운 메모데이터";
+            this.btn_new_memo.UseVisualStyleBackColor = true;
+            this.btn_new_memo.Click += new System.EventHandler(this.btn_new_memo_Click);
+            // 
+            // addNewMemoDialog
+            // 
+            this.addNewMemoDialog.Filter = "Data파일(*.xml)|*.xml";
+            this.addNewMemoDialog.RestoreDirectory = true;
+            this.addNewMemoDialog.Title = "데이터 파일 생성";
+            this.addNewMemoDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.addNewMemoDialog_FileOk);
+            // 
             // Form_Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(424, 291);
+            this.Controls.Add(this.btn_new_memo);
             this.Controls.Add(this.btn_search_data);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.txt_memoDataPath);
-            this.MinimumSize = new System.Drawing.Size(300, 300);
+            this.MinimumSize = new System.Drawing.Size(440, 330);
             this.Name = "Form_Setting";
             this.Text = "Form_Setting";
             this.Load += new System.EventHandler(this.Form_Setting_Load);
@@ -222,9 +242,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog searchFileDialog;
         private System.Windows.Forms.ContextMenuStrip ctxt_listview1;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.Button btn_search_data;
+        private System.Windows.Forms.Button btn_new_memo;
+        private System.Windows.Forms.SaveFileDialog addNewMemoDialog;
     }
 }

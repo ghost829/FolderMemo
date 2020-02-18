@@ -1537,5 +1537,11 @@ namespace FolderMemo
             this.ctxt_lstView_makeMemo.Enabled = !m_isSearchResult;
             this.ctxt_lstView_paste.Enabled = !m_isSearchResult && m_copylst.Count > 0;
         }
+
+        private void ctxt_form_setting_Click(object sender, EventArgs e)
+        {
+            // 설정화면 출력
+            SystemTray.getInstance().ShowSettingForm(null, null);
+        }
     }
 }

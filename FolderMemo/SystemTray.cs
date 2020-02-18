@@ -28,8 +28,18 @@ namespace FolderMemo
             System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString())
             , System.Windows.Forms.Application.StartupPath + "\\" + DEFINE.MEMO_DATA_FILENAME); // 메모데이터 기본위치값
 
-        public SystemTray()
+        private static SystemTray m_instance;
+
+        private SystemTray()
         {
+
+        }
+
+        public static SystemTray getInstance()
+        {
+            if (m_instance == null)
+                m_instance = new SystemTray();
+            return m_instance;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -772,6 +782,9 @@ namespace FolderMemo
             {
                 m_form_about = new FolderMemoAboutBox();
                 m_form_about.FormClosed += new FormClosedEventHandler(AboutFormClosed);
+                m_form_about.Text = DEFINE.TRAY_NAME + " About";
+                m_form_about.Icon = Properties.Resources.icon_stick_note_32x;
+                m_form_about.ShowInTaskbar = false;
                 m_form_about.Show();
             }
             else
@@ -883,7 +896,12 @@ namespace FolderMemo
         }
         #endregion
 
-        private void ShowSettingForm(object sender, EventArgs e)
+        /// <summary>
+        /// 설정화면 열기
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ShowSettingForm(object sender, EventArgs e)
         {
             if (mainSetting == null)
             {

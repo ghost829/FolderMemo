@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace FolderMemo
 {
@@ -52,75 +53,6 @@ namespace FolderMemo
         }
 
 
-
-        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if( listView1.SelectedItems.Count == 1 )
-            {
-                int itemIndex = listView1.SelectedItems[0].Index;
-                DEFINE.RECENT_MEMO_DATA data = DEFINE.RECENT_MEMO_DATA_PATH[itemIndex];
-                setMemoDataPathText(data.str_full_path);
-            }
-        }
-
-
-        private void btn_apply_Click(object sender, EventArgs e)
-        {
-            string memoDataPath = txt_memoDataPath.Text;
-            string filePath = System.IO.Path.GetDirectoryName(memoDataPath);
-            if(filePath == null || filePath.Length == 0 || filePath == memoDataPath)
-            {
-                memoDataPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString()), memoDataPath);
-            }
-            if (!System.IO.File.Exists(memoDataPath))
-            {
-                MessageBox.Show("메모데이터가 해당 경로에 존재하지 않습니다.");
-            }
-            else if (occurred_event != null)
-            {
-                occurred_event(DEFINE.EVENTTYPE.EVENTTYPE_SAVEMEMODATAPATH, memoDataPath);
-            }
-        }
-
-        private void btn_cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-            if (sender == openFileDialog1)
-            {
-                setMemoDataPathText(openFileDialog1.FileName);
-            }
-        }
-
-        private void listView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if( e.Button == MouseButtons.Right)
-            {
-                Point p = e.Location;
-                
-                ctxt_listview1.Show(listView1.PointToScreen(e.Location));
-            }
-        }
-
-        #region ## Form Context Menu
-        private void ctxt_listview1_delete_Click(object sender, EventArgs e)
-        {
-            if( listView1.SelectedItems.Count == 1 )
-            {
-                int itemIndex = listView1.SelectedItems[0].Index;
-                occurred_event(DEFINE.EVENTTYPE.EVENTTYPE_DELETE_RECENT_MEMODATAPATH, itemIndex);
-            }
-        }
-        #endregion
-
-        private void btn_search_data_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.ShowDialog(this);
-        }
-
         /// <summary>
         /// 데이터 파일 경로 text 설정
         /// </summary>
@@ -135,5 +67,118 @@ namespace FolderMemo
             }
             txt_memoDataPath.Text = str_memo_data_path;
         }
+
+        /// <summary>
+        /// txt_memoDataPath에 작성된 데이터 적용
+        /// </summary>
+        private void apply_data(){
+            string memoDataPath = txt_memoDataPath.Text;
+            string filePath = System.IO.Path.GetDirectoryName(memoDataPath);
+            if (filePath == null || filePath.Length == 0 || filePath == memoDataPath)
+            {
+                memoDataPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.ExecutablePath.ToString()), memoDataPath);
+            }
+            if (!System.IO.File.Exists(memoDataPath))
+            {
+                MessageBox.Show("메모데이터가 해당 경로에 존재하지 않습니다.");
+            }
+            else if (occurred_event != null)
+            {
+                occurred_event(DEFINE.EVENTTYPE.EVENTTYPE_SAVEMEMODATAPATH, memoDataPath);
+            }
+        }
+
+
+        #region ## EVENT
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            apply_data();
+        }
+
+
+        private void btn_apply_Click(object sender, EventArgs e)
+        {
+            apply_data();
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            if (sender == searchFileDialog)
+            {
+                setMemoDataPathText(searchFileDialog.FileName);
+            }
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if( e.Button == MouseButtons.Right)
+            {
+                Point p = e.Location;
+                
+                ctxt_listview1.Show(listView1.PointToScreen(e.Location));
+            }
+        }
+
+        private void ctxt_listview1_delete_Click(object sender, EventArgs e)
+        {
+            if( listView1.SelectedItems.Count == 1 )
+            {
+                int itemIndex = listView1.SelectedItems[0].Index;
+                occurred_event(DEFINE.EVENTTYPE.EVENTTYPE_DELETE_RECENT_MEMODATAPATH, itemIndex);
+            }
+        }
+
+        private void btn_search_data_Click(object sender, EventArgs e)
+        {
+            searchFileDialog.InitialDirectory = System.Windows.Forms.Application.StartupPath;
+            searchFileDialog.ShowDialog(this);
+        }
+
+
+        private void btn_new_memo_Click(object sender, EventArgs e)
+        {
+            addNewMemoDialog.InitialDirectory = System.Windows.Forms.Application.StartupPath;
+            addNewMemoDialog.ShowDialog(this);
+        }
+
+        private void addNewMemoDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            String fileName = addNewMemoDialog.FileName;
+            
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml("<MEMODATA></MEMODATA>");
+
+            //Create an XML declaration. 
+            XmlDeclaration xmldecl;
+            xmldecl = doc.CreateXmlDeclaration("1.0", "utf-8", null);
+
+            //Add the new node to the document.
+            XmlElement root = doc.DocumentElement;
+            doc.InsertBefore(xmldecl, root);
+            
+            doc.Save(fileName);
+
+            setMemoDataPathText(fileName);
+            apply_data();
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                int itemIndex = listView1.SelectedItems[0].Index;
+                DEFINE.RECENT_MEMO_DATA data = DEFINE.RECENT_MEMO_DATA_PATH[itemIndex];
+                setMemoDataPathText(data.str_full_path);
+            }
+        }
+
+
+        #endregion
     }
 }

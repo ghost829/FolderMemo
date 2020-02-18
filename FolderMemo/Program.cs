@@ -24,7 +24,7 @@ namespace FolderMemo
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new SystemTray());
+                Application.Run(SystemTray.getInstance());
                 mutex.ReleaseMutex();
             }
             else

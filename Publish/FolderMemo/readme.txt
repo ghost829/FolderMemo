@@ -1,6 +1,10 @@
 ﻿https://github.com/ghost829/FolderMemo
 
 [버전 개정 이력]
+[200218]v1.0.0.3
+ - System Tray > Setting화면 수정 및 새로운 메모 생성 버튼 추가
+ - About Form 구성 변경
+
 v1.0.0.2
  - 메모창에서 검색기능 수행 시 대소문자구분없이 검색하게 수정
 
