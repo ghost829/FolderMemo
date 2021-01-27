@@ -297,16 +297,49 @@ namespace FolderMemoUpdate
         /// </summary>
         private void read_versionFileDoc()
         {
-            string str_server_version_url = Path.Combine(m_str_server_url, m_str_verion_file_name);
-            WebRequest webReq_version = WebRequest.Create(str_server_version_url);
-            Stream objStream = webReq_version.GetResponse().GetResponseStream();
-            StreamReader objReader = new StreamReader(objStream);
-            String str_doc_version = objReader.ReadToEnd();
-            objReader.Close();
-            objStream.Close();
-            m_doc_version.LoadXml(str_doc_version);
+            // 210128 Github version.xml 읽어오기 실패!! SSL/TLS 보안 채널을 만들 수 없습니다.
+            // 해결법 ( 출처: https://shared.co.kr/183 [Life is but a dream] )
+
+            ServicePointManager.Expect100Continue = true;
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Ssl3;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Ssl3; // 210128 .net Framework 4.0에는 Tls11,Tls12 없음
+
+            // Skip validation of SSL/TLS certificate
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
+            try{
+                string str_server_version_url = m_str_server_url + "/" + m_str_verion_file_name;
+                WebRequest webReq_version = WebRequest.Create(str_server_version_url);
+                webReq_version.Method = "GET";
+
+                WebResponse respon = webReq_version.GetResponse();
+                Stream objStream = respon.GetResponseStream();
+                StreamReader objReader = new StreamReader(objStream);
+                String str_doc_version = objReader.ReadToEnd();
+                objReader.Close();
+                objStream.Close();
+                m_doc_version.LoadXml(str_doc_version);
+            }
+            catch(Exception ex){
+                alert_msg(ex.Message + "\n" + ex.StackTrace, MessageBoxButtons.OK);
+            }
+            
         }
 
+        private void alert_msg(String msg, MessageBoxButtons nButtonType) {
+            DialogResult result = MessageBox.Show(msg, "잠깐만요!!", nButtonType);
+            if ( nButtonType == MessageBoxButtons.OKCancel && result == DialogResult.Cancel) {
+                this.close_form();
+                return;
+            }
+            else if ( nButtonType == MessageBoxButtons.OK)
+            {
+                this.close_form();
+                return;
+            }
+        }
+        
         /// <summary>
         /// 파일존재하지 않을경우 다운로드 수행
         /// </summary>
