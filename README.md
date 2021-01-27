@@ -10,7 +10,10 @@
   * 사용자가 원하는 시점에 파일 저장 및 삭제 가능
   * Drag&Drop 기능으로 기존에 txt파일로 저장하던 메모도 간편하게 옮겨서 쓰기 가능!(반대로 내보내기도!!!)
   * 검색기능!!! 초성 검색도 지원~
-## 3. 제작자
+## 3. Install
+  * Download : Publish > FolderMemoUpdate.exe
+  * Direct Link : https://github.com/ghost829/FolderMemo/blob/master/Publish/FolderMemoUpdate.exe?raw=true
+## 4. 제작자
   * SSW / ghost829@naver.com
-## 4. Licence
+## 5. Licence
   * 이 소스에 대한 저작권은 모두 저에게 있습니다. 하지만 참고해서 고치고 싶으면 고쳐도 됩니다. 좋은건 공유해요 :)
