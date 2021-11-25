@@ -1543,5 +1543,19 @@ namespace FolderMemo
             // 설정화면 출력
             SystemTray.getInstance().ShowSettingForm(null, null);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form_alarm form = new Form_alarm();
+            Console.WriteLine(this.Location);
+            Point p = this.Location;
+            p.Offset((this.Size.Width - form.Size.Width) / 2, (this.Size.Height - form.Size.Width) / 2);
+            
+            form.Location = p;
+            // form.StartPosition = FormStartPosition.CenterParent;
+            // form.Location = this.Location;
+            form.ShowDialog(this);
+            
+        }
     }
 }

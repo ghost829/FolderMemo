@@ -311,6 +311,31 @@ namespace PaintTextBoxClassLib
             //setCaretWidth(0);
             isLoaded = true;
 
+            // 210727 wndproc에서 WM_MOUSEWHEEL WParam값을 음수로 안내려줌(msdn에서 다중모니터 환경에서는 값이 올바르지 않을 수 있다함)
+            // 마우스 휠 이벤트 할당하여 사용 (ref : https://stackoverflow.com/questions/49529144/how-to-detect-mouse-wheel-direction-forwards-or-backwards)
+            this.MouseWheel += new MouseEventHandler(delegate(object s1, MouseEventArgs e1)
+            {
+                if (!isProcessCmdkeySkip)
+                {
+                    if (e1.Delta < 0) // WheelDown
+                    {
+                        int tmpFirstViewLine = firstViewLine + 3;
+                        firstViewLine = Math.Min(tmpFirstViewLine, this.lineInfo.Count - 1);
+                        this.Invalidate();
+                    }
+                    else // WheelUp
+                    {
+                        if (firstViewLine != 0)
+                        {
+                            int tmpFirstViewLine = firstViewLine - 3;
+                            firstViewLine = Math.Max(tmpFirstViewLine, 0);
+                            this.Invalidate();
+                        }
+                    }
+                }
+                Console.WriteLine(e1.Delta);
+            });
+
             base.OnLoad(e);
         }
 
@@ -1490,7 +1515,7 @@ namespace PaintTextBoxClassLib
         #region ** WndProc
 
         private const int WM_KEYDOWN = 0x100;
-        private const int WM_MOUSEWHEEL = 0x020A;
+        //private const int WM_MOUSEWHEEL = 0x020A;
 
         private const int WM_CHAR = 0x102; // 영문입력(1byte) || 한글조합 완성(2byte)시 byte만큼 발생. 한글은 1byte씩 두번 찍히므로 WM_CHAR로 한글을 완성할 수 없다.
         private const int WM_IME_COMPOSITION = 0x10F; //한글 조합중일때 발생
@@ -1547,43 +1572,43 @@ namespace PaintTextBoxClassLib
         {
             switch (m.Msg)
             {
-                case WM_MOUSEWHEEL: //마우스 휠 이벤트 발생시 - firstViewLine 값 조정하고 invalidate
-                    #region WM_MOUSEWHEEL
-                    if (!isProcessCmdkeySkip)
-                    {
-                        if (m.WParam.ToInt64() < 0) // WheelDown
-                        {
-                            int tmpFirstViewLine = firstViewLine + 3;
-                            firstViewLine = Math.Min(tmpFirstViewLine, this.lineInfo.Count - 1);
-                            this.Invalidate();
-                            //if (firstViewLine != this.lineInfo.Count)
-                            //{
-                            //    firstViewLine++;
-                            //    this.Invalidate();
-                            //}
-                        }
-                        else // WheelUp
-                        {
-                            if (firstViewLine != 0)
-                            {
-                                int tmpFirstViewLine = firstViewLine - 3;
-                                firstViewLine = Math.Max(tmpFirstViewLine, 0);
-                                this.Invalidate();
-                            }
-                            //if (firstViewLine != 0)
-                            //{
-                            //    firstViewLine--;
-                            //    this.Invalidate();
-                            //}
-                        }
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("LineTextBox - WheelEventSkip");
-                        base.WndProc(ref m);
-                    }
-                    #endregion
-                    break;
+                //case WM_MOUSEWHEEL: //마우스 휠 이벤트 발생시 - firstViewLine 값 조정하고 invalidate
+                //    #region WM_MOUSEWHEEL
+                //    if (!isProcessCmdkeySkip)
+                //    {
+                //        if (m.WParam.ToInt64() < 0) // WheelDown
+                //        {
+                //            int tmpFirstViewLine = firstViewLine + 3;
+                //            firstViewLine = Math.Min(tmpFirstViewLine, this.lineInfo.Count - 1);
+                //            this.Invalidate();
+                //            //if (firstViewLine != this.lineInfo.Count)
+                //            //{
+                //            //    firstViewLine++;
+                //            //    this.Invalidate();
+                //            //}
+                //        }
+                //        else // WheelUp
+                //        {
+                //            if (firstViewLine != 0)
+                //            {
+                //                int tmpFirstViewLine = firstViewLine - 3;
+                //                firstViewLine = Math.Max(tmpFirstViewLine, 0);
+                //                this.Invalidate();
+                //            }
+                //            //if (firstViewLine != 0)
+                //            //{
+                //            //    firstViewLine--;
+                //            //    this.Invalidate();
+                //            //}
+                //        }
+                //    }
+                //    else
+                //    {
+                //        System.Diagnostics.Debug.WriteLine("LineTextBox - WheelEventSkip");
+                //        base.WndProc(ref m);
+                //    }
+                //    #endregion
+                //    break;
                 case WM_KEYDOWN: //현재 안씀(한글 조합시에도 KeyDown이벤트가 떨어짐. 웬만하면 쓰지 말자)
                     #region WM_KEYDOWN
 

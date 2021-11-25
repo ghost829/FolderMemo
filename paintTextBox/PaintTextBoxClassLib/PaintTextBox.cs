@@ -56,6 +56,22 @@ namespace PaintTextBoxClassLib
             linesTextBox1.throwIsDefaultText += linesTextBox1_throwIsDefaultText;
             linesTextBox1.LostFocus += linesTextBox1_LostFocus;
             linesTextBox1.GotFocus += linesTextBox1_GotFocus;
+            linesTextBox1.MouseWheel += new MouseEventHandler(delegate (object sender, MouseEventArgs e) {
+                if (e.Delta < 0) // WheelDown
+                {
+                    if (IntellisenseVisible)
+                    {
+                        IntellisenseBox.firstViewLineAdjust++;
+                    }
+                }
+                else // WheelUp
+                {
+                    if (IntellisenseVisible)
+                    {
+                        IntellisenseBox.firstViewLineAdjust--;
+                    }
+                }
+        });
         }
         #endregion
 
@@ -636,34 +652,34 @@ namespace PaintTextBoxClassLib
         #endregion
 
 
-        #region ** WndProc - MouseWheel Event(자동완성기능 true일때 사용)
-        private const int WM_MOUSEWHEEL = 0x020A;
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case WM_MOUSEWHEEL:
-                    if (m.WParam.ToInt32() < 0) // WheelDown
-                    {
-                        if (IntellisenseVisible)
-                        {
-                            IntellisenseBox.firstViewLineAdjust++;
-                        }
-                    }
-                    else // WheelUp
-                    {
-                        if (IntellisenseVisible)
-                        {
-                            IntellisenseBox.firstViewLineAdjust--;
-                        }
-                    }
-                    break;
-                default:
-                    base.WndProc(ref m);
-                    break;
-            }
-        }
-        #endregion
+        //#region ** WndProc - MouseWheel Event(자동완성기능 true일때 사용)
+        //private const int WM_MOUSEWHEEL = 0x020A;
+        //protected override void WndProc(ref Message m)
+        //{
+        //    switch (m.Msg)
+        //    {
+        //        case WM_MOUSEWHEEL:
+        //            if (m.WParam.ToInt32() < 0) // WheelDown
+        //            {
+        //                if (IntellisenseVisible)
+        //                {
+        //                    IntellisenseBox.firstViewLineAdjust++;
+        //                }
+        //            }
+        //            else // WheelUp
+        //            {
+        //                if (IntellisenseVisible)
+        //                {
+        //                    IntellisenseBox.firstViewLineAdjust--;
+        //                }
+        //            }
+        //            break;
+        //        default:
+        //            base.WndProc(ref m);
+        //            break;
+        //    }
+        //}
+        //#endregion
 
         #region ** IntellisenseBox Function
 

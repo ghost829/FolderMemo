@@ -36,6 +36,7 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.ctxt_form = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxt_form_topmost = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxt_form_setting = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxt_form_exit = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxt_listViewItem = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxt_lstItem_open = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,7 @@
             this.txt_search = new System.Windows.Forms.TextBox();
             this.lbl_time = new System.Windows.Forms.Label();
             this.btn_upperPath = new System.Windows.Forms.Button();
-            this.ctxt_form_setting = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.ctxt_form.SuspendLayout();
             this.ctxt_listViewItem.SuspendLayout();
             this.ctxt_listView.SuspendLayout();
@@ -120,19 +121,26 @@
             this.ctxt_form_setting,
             this.ctxt_form_exit});
             this.ctxt_form.Name = "ctxt_form";
-            this.ctxt_form.Size = new System.Drawing.Size(153, 92);
+            this.ctxt_form.Size = new System.Drawing.Size(122, 70);
             // 
             // ctxt_form_topmost
             // 
             this.ctxt_form_topmost.Name = "ctxt_form_topmost";
-            this.ctxt_form_topmost.Size = new System.Drawing.Size(152, 22);
+            this.ctxt_form_topmost.Size = new System.Drawing.Size(121, 22);
             this.ctxt_form_topmost.Text = "&TopMost";
             this.ctxt_form_topmost.Click += new System.EventHandler(this.ctxt_form_topmost_Click);
+            // 
+            // ctxt_form_setting
+            // 
+            this.ctxt_form_setting.Name = "ctxt_form_setting";
+            this.ctxt_form_setting.Size = new System.Drawing.Size(121, 22);
+            this.ctxt_form_setting.Text = "&Setting";
+            this.ctxt_form_setting.Click += new System.EventHandler(this.ctxt_form_setting_Click);
             // 
             // ctxt_form_exit
             // 
             this.ctxt_form_exit.Name = "ctxt_form_exit";
-            this.ctxt_form_exit.Size = new System.Drawing.Size(152, 22);
+            this.ctxt_form_exit.Size = new System.Drawing.Size(121, 22);
             this.ctxt_form_exit.Text = "E&xit";
             this.ctxt_form_exit.Click += new System.EventHandler(this.ctxt_form_exit_Click);
             // 
@@ -239,12 +247,19 @@
             this.btn_upperPath.UseVisualStyleBackColor = true;
             this.btn_upperPath.Click += new System.EventHandler(this.btn_upperPath_Click);
             // 
-            // ctxt_form_setting
+            // button1
             // 
-            this.ctxt_form_setting.Name = "ctxt_form_setting";
-            this.ctxt_form_setting.Size = new System.Drawing.Size(152, 22);
-            this.ctxt_form_setting.Text = "&Setting";
-            this.ctxt_form_setting.Click += new System.EventHandler(this.ctxt_form_setting_Click);
+            this.button1.BackgroundImage = global::FolderMemo.Properties.Resources._171279_alarm_clock_bell_time_icon_48_48;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(273, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 31);
+            this.button1.TabIndex = 7;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form_Folder
             // 
@@ -253,6 +268,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
             this.ClientSize = new System.Drawing.Size(420, 340);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_time);
             this.Controls.Add(this.btn_upperPath);
             this.Controls.Add(this.txt_search);
@@ -308,5 +324,6 @@
         private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.Button btn_upperPath;
         private System.Windows.Forms.ToolStripMenuItem ctxt_form_setting;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -63,6 +63,16 @@ namespace FolderMemo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _171279_alarm_clock_bell_time_icon_48_48 {
+            get {
+                object obj = ResourceManager.GetObject("_171279_alarm_clock_bell_time_icon_48_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btn_close_down {
             get {
                 object obj = ResourceManager.GetObject("btn_close_down", resourceCulture);

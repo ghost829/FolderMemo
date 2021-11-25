@@ -80,6 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alarm\Form_alarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alarm\Form_alarm.Designer.cs">
+      <DependentUpon>Form_alarm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheckFile.cs" />
     <Compile Include="Common\XmlControl.cs" />
     <Compile Include="CustomTooltip.cs">
@@ -129,6 +135,9 @@
     <Compile Include="Form_Memo_RichText.Designer.cs">
       <DependentUpon>Form_Memo_RichText.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Alarm\Form_alarm.resx">
+      <DependentUpon>Form_alarm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomTooltip.resx">
       <DependentUpon>CustomTooltip.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +250,7 @@
     <None Include="Resources\search_2.png" />
     <None Include="Resources\folder_up.png" />
     <None Include="Resources\folder_up_disable.png" />
+    <None Include="Resources\171279_alarm_clock_bell_time_icon_48_48.png" />
     <Content Include="temp.txt" />
     <Content Include="xml\config.xml" />
     <Content Include="xml\data.xml">

@@ -354,7 +354,11 @@ namespace FolderMemo
             }
             else if (e.KeyCode == Keys.F5) // 날짜 입력
             {
-                richTextBox1.SelectedText = DateTime.Now.ToString("yyMMdd");
+                richTextBox1.SelectedText = DateTime.Now.ToString("yyMMdd(ddd)");
+            }
+            else if (e.KeyCode == Keys.F6) // 시간 입력
+            {
+                richTextBox1.SelectedText = DateTime.Now.ToString("HH:mm");
             }
         }
 
